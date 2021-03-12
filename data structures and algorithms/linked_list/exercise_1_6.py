@@ -45,7 +45,10 @@ class LinkedList:
         node = self.head
         while node is not None:
             if node.value == val:
-                prev_node.next = node.next
+                if prev_node is None:
+                    self.head = node.next
+                else:
+                    prev_node.next = node.next
                 if not all:
                     break
             prev_node = node
@@ -65,9 +68,10 @@ class LinkedList:
 
     def insert(self, afterNode, newNode):
         if afterNode is None:
+            cut_end = self.head
             self.head = newNode
-            self.tail = newNode
         else:
-            cut_tail = afterNode.next
-            afterNode.next = newNode
-            newNode.next = cut_tail
+            cut_start = afterNode
+            cut_end = afterNode.next
+            cut_start.next = newNode
+        newNode.next = cut_end
