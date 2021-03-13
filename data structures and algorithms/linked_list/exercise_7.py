@@ -2,7 +2,7 @@ from exercise_1_6 import Node, LinkedList
 
 
 print('delete test\n')
-arr = [1,2,3,2]
+arr = [1,3,4,2,1]
 linked_list = LinkedList()
 for x in arr:
 	linked_list.add_in_tail(Node(x))
@@ -18,11 +18,10 @@ linked_list.print_all_nodes()
 print()
 linked_list.delete(3)
 linked_list.print_all_nodes()
-print('\n---------------------------------\n')
 
 
 print('multiple delete test\n')
-arr = [1,2,3,2]
+arr = [1,1,3,1]
 linked_list = LinkedList()
 for x in arr:
 	linked_list.add_in_tail(Node(x))
@@ -30,9 +29,8 @@ for x in arr:
 linked_list.print_all_nodes()
 print()
 
-linked_list.delete(2, all=True)
+linked_list.delete(1, all=True)
 linked_list.print_all_nodes()
-print('\n---------------------------------\n')
 
 
 print('clean test\n')
@@ -46,7 +44,6 @@ print()
 
 linked_list.clean()
 linked_list.print_all_nodes()
-print('\n---------------------------------\n')
 
 
 print('find_all test\n')
@@ -59,7 +56,6 @@ linked_list.print_all_nodes()
 print()
 
 print(linked_list.find_all(2))
-print('\n---------------------------------\n')
 
 
 print('len test\n')
@@ -72,7 +68,6 @@ linked_list.print_all_nodes()
 print()
 
 print(linked_list.len())
-print('\n---------------------------------\n')
 
 
 print('insert test\n')
@@ -93,4 +88,3 @@ print()
 
 linked_list.insert(None, Node(6))
 linked_list.print_all_nodes()
-print('\n---------------------------------\n')
