@@ -21,7 +21,7 @@ linked_list.print_all_nodes()
 
 
 print('multiple delete test\n')
-arr = [1,1,3,1]
+arr = [1,1,2,2]
 linked_list = LinkedList()
 for x in arr:
 	linked_list.add_in_tail(Node(x))
@@ -29,8 +29,28 @@ for x in arr:
 linked_list.print_all_nodes()
 print()
 
-linked_list.delete(1, all=True)
+linked_list.delete(2, all=True)
 linked_list.print_all_nodes()
+
+
+print('test tail content after delete\n')
+arr = [1,2,3,4,4]
+nodes_arr = []
+linked_list = LinkedList()
+for x in arr:
+	node = Node(x)
+	nodes_arr.append(node)
+	linked_list.add_in_tail(node)
+
+linked_list.print_all_nodes()
+print()
+
+linked_list.delete(4, all=True)
+
+linked_list.print_all_nodes()
+print()
+
+print(linked_list.tail is nodes_arr[2])
 
 
 print('clean test\n')
@@ -88,3 +108,23 @@ print()
 
 linked_list.insert(None, Node(6))
 linked_list.print_all_nodes()
+
+
+print('test tail content after insert\n')
+arr = [1,2,3]
+a = Node(5)
+nodes_arr = []
+linked_list = LinkedList()
+for x in arr:
+	node = Node(x)
+	nodes_arr.append(node)
+	linked_list.add_in_tail(node)
+
+linked_list.print_all_nodes()
+print()
+
+linked_list.insert(nodes_arr[len(arr) - 1], a)
+linked_list.print_all_nodes()
+print()
+
+print(linked_list.tail is a)

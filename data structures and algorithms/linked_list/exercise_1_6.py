@@ -54,6 +54,7 @@ class LinkedList:
             else:
                 prev_node = node
             node = node.next
+        self.tail = prev_node
 
     def clean(self):
         self.head = None
@@ -76,3 +77,5 @@ class LinkedList:
             cut_end = afterNode.next
             cut_start.next = newNode
         newNode.next = cut_end
+        if self.tail is afterNode:
+            self.tail = newNode
