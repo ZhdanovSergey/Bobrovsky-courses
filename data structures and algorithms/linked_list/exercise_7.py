@@ -1,4 +1,5 @@
 from exercise_1_6 import Node, LinkedList
+from exercise_8 import get_sum_of_lists
 
 
 print('single delete test\n')
@@ -167,3 +168,21 @@ linked_list.print_all_nodes()
 print()
 
 print(linked_list.tail is a)
+
+
+print('sum of lists test')
+arr1 = [1,2,3]
+arr2 = [8,7,6]
+linked_list1 = LinkedList()
+linked_list2 = LinkedList()
+for x in arr1:
+	linked_list1.add_in_tail(Node(x))
+for x in arr2:
+	linked_list2.add_in_tail(Node(x))
+
+linked_list1.print_all_nodes()
+print()
+linked_list2.print_all_nodes()
+print()
+a = get_sum_of_lists(linked_list1, linked_list2)
+a.print_all_nodes()
