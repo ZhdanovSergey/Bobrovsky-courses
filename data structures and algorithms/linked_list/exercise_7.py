@@ -1,7 +1,7 @@
 from exercise_1_6 import Node, LinkedList
 
 
-print('delete test\n')
+print('single delete test\n')
 arr = [1,3,4,2,1]
 linked_list = LinkedList()
 for x in arr:
@@ -12,12 +12,23 @@ print()
 
 linked_list.delete(1)
 linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
 print()
 linked_list.delete(2)
 linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
 print()
 linked_list.delete(3)
 linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
+print()
+linked_list.delete(1)
+linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
 
 
 print('multiple delete test\n')
@@ -31,6 +42,24 @@ print()
 
 linked_list.delete(2, all=True)
 linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
+
+
+print('delete single element from 2-elem list\n')
+linked_list = LinkedList()
+linked_list.add_in_tail(Node(1))
+linked_list.add_in_tail(Node(2))
+
+linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
+print()
+
+linked_list.delete(1)
+linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
 
 
 print('test tail content after delete\n')
@@ -104,10 +133,20 @@ print()
 
 linked_list.insert(nodes_arr[1], Node(5))
 linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
 print()
 
 linked_list.insert(None, Node(6))
 linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
+print()
+
+linked_list.insert(nodes_arr[len(nodes_arr) - 1], Node(10))
+linked_list.print_all_nodes()
+print('head ' + str(linked_list.head.value))
+print('tail ' + str(linked_list.tail.value))
 
 
 print('test tail content after insert\n')
