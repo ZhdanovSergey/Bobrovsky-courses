@@ -4,10 +4,10 @@ from exercise_1_6 import Node, LinkedList
 from exercise_8 import get_sum_of_lists
 
 def linked_list_by_array_of_values(arr):
-  orig_list = LinkedList()
+  linked_list = LinkedList()
   for x in arr:
-      orig_list.add_in_tail(Node(x))
-  return orig_list
+      linked_list.add_in_tail(Node(x))
+  return linked_list
 
 def linked_list_by_array_of_nodes(arr):
   linked_list = LinkedList()
@@ -15,29 +15,11 @@ def linked_list_by_array_of_nodes(arr):
   	linked_list.add_in_tail(x)
   return linked_list
 
-def check_linked_list_tail_correct(orig_list):
+def check_linked_list_tail_correct(linked_list):
 	prev_node = None
-	node = orig_list.head
-	while node is not None:
+	for node in linked_list:
 		prev_node = node
-		node = node.next
-	return prev_node == orig_list.tail
-
-def array_of_values_by_linked_list(linked_list):
-	arr = []
-	node = linked_list.head
-	while node is not None:
-		arr.append(node.value)
-		node = node.next
-	return arr
-
-def array_of_nodes_by_linked_list(linked_list):
-	arr = []
-	node = linked_list.head
-	while node is not None:
-		arr.append(node)
-		node = node.next
-	return arr
+	return prev_node == linked_list.tail
 
 class LinkedListTests(unittest.TestCase):
 
@@ -45,37 +27,37 @@ class LinkedListTests(unittest.TestCase):
 		linked_list = linked_list_by_array_of_values([1,2,3,4,5])
 		linked_list.delete(3)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_values_by_linked_list(linked_list), [1,2,4,5])
+		self.assertEqual([x.value for x in linked_list], [1,2,4,5])
 
 	def test_single_deletion_first_elem(self):
 		linked_list = linked_list_by_array_of_values([1,2,3,4,5])
 		linked_list.delete(1)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_values_by_linked_list(linked_list), [2,3,4,5])
+		self.assertEqual([x.value for x in linked_list], [2,3,4,5])
 
 	def test_single_deletion_last_elem(self):
 		linked_list = linked_list_by_array_of_values([1,2,3,4,5])
 		linked_list.delete(5)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_values_by_linked_list(linked_list), [1,2,3,4])
+		self.assertEqual([x.value for x in linked_list], [1,2,3,4])
 
 	def test_single_deletion_with_empty_result(self):
 		linked_list = linked_list_by_array_of_values([1])
 		linked_list.delete(1)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_values_by_linked_list(linked_list), [])
+		self.assertEqual([x.value for x in linked_list], [])
 
 	def test_single_deletion_first_elem_with_single_elem_result(self):
 		linked_list = linked_list_by_array_of_values([1,2])
 		linked_list.delete(1)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_values_by_linked_list(linked_list), [2])
+		self.assertEqual([x.value for x in linked_list], [2])
 
 	def test_single_deletion_last_elem_with_single_elem_result(self):
 		linked_list = linked_list_by_array_of_values([1,2])
 		linked_list.delete(2)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_values_by_linked_list(linked_list), [1])
+		self.assertEqual([x.value for x in linked_list], [1])
 
 	def test_single_deletion_random(self):
 		for i in range(1000):
@@ -87,19 +69,19 @@ class LinkedListTests(unittest.TestCase):
 			linked_list.delete(test_val)
 			arr.remove(test_val)
 			self.assertTrue(check_linked_list_tail_correct(linked_list))
-			self.assertEqual(array_of_values_by_linked_list(linked_list), arr)
+			self.assertEqual([x.value for x in linked_list], arr)
 
 	def test_multiple_deletion_regression(self):
 		linked_list = linked_list_by_array_of_values([1,2,3,3,3,4,5])
 		linked_list.delete(3, all=True)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_values_by_linked_list(linked_list), [1,2,4,5])
+		self.assertEqual([x.value for x in linked_list], [1,2,4,5])
 
 	def test_multiple_deletion_with_empty_result(self):
 		linked_list = linked_list_by_array_of_values([1,1,1,1,1,1])
 		linked_list.delete(1, all=True)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_values_by_linked_list(linked_list), [])
+		self.assertEqual([x.value for x in linked_list], [])
 
 	def test_multiple_deletion_random(self):
 		for i in range(1000):
@@ -111,13 +93,13 @@ class LinkedListTests(unittest.TestCase):
 			linked_list.delete(test_val, all=True)
 			ans_arr = [x for x in arr if x != test_val]
 			self.assertTrue(check_linked_list_tail_correct(linked_list))
-			self.assertEqual(array_of_values_by_linked_list(linked_list), ans_arr)
+			self.assertEqual([x.value for x in linked_list], ans_arr)
 
 	def test_clean_regression(self):
 		linked_list = linked_list_by_array_of_values([1,2,3,4,5])
 		linked_list.clean()
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_values_by_linked_list(linked_list), [])
+		self.assertEqual([x.value for x in linked_list], [])
 
 	def test_find_all_regression(self):
 		node1 = Node(1)
@@ -176,7 +158,7 @@ class LinkedListTests(unittest.TestCase):
 		linked_list = linked_list_by_array_of_nodes([node1, node2])
 		linked_list.insert(node1, node3)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_nodes_by_linked_list(linked_list), [node1, node3, node2])
+		self.assertEqual([x for x in linked_list], [node1, node3, node2])
 
 	def test_insert_first_elem(self):
 		node1 = Node(1)
@@ -185,7 +167,7 @@ class LinkedListTests(unittest.TestCase):
 		linked_list = linked_list_by_array_of_nodes([node1, node2])
 		linked_list.insert(None, node3)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_nodes_by_linked_list(linked_list), [node3, node1, node2])
+		self.assertEqual([x for x in linked_list], [node3, node1, node2])
 
 	def test_insert_last_elem(self):
 		node1 = Node(1)
@@ -194,14 +176,14 @@ class LinkedListTests(unittest.TestCase):
 		linked_list = linked_list_by_array_of_nodes([node1, node2])
 		linked_list.insert(node2, node3)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_nodes_by_linked_list(linked_list), [node1, node2, node3])
+		self.assertEqual([x for x in linked_list], [node1, node2, node3])
 
 	def test_insert_in_empty_list(self):
 		node1 = Node(1)
 		linked_list = LinkedList()
 		linked_list.insert(None, node1)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_nodes_by_linked_list(linked_list), [node1])
+		self.assertEqual([x for x in linked_list], [node1])
 
 	def test_insert_random(self):
 		for i in range(1000):
@@ -214,13 +196,13 @@ class LinkedListTests(unittest.TestCase):
 		linked_list.insert(after_node, test_node)
 		nodes_arr.insert(nodes_arr.index(after_node) + 1, test_node)
 		self.assertTrue(check_linked_list_tail_correct(linked_list))
-		self.assertEqual(array_of_nodes_by_linked_list(linked_list), nodes_arr)
+		self.assertEqual([x for x in linked_list], nodes_arr)
 
 	def test_sum_of_lists_regression(self):
 		linked_list1 = linked_list_by_array_of_values([1,2,3])
 		linked_list2 = linked_list_by_array_of_values([4,5,6])
 		linked_list_sum = get_sum_of_lists(linked_list1, linked_list2)
-		self.assertEqual(array_of_values_by_linked_list(linked_list_sum), [5,7,9])
+		self.assertEqual([x.value for x in linked_list_sum], [5,7,9])
 
 	def test_sum_of_lists_with_different_len(self):
 		linked_list1 = linked_list_by_array_of_values([1,2,3])
@@ -244,9 +226,36 @@ class LinkedListTests(unittest.TestCase):
 				ans_arr = []
 				for i in range(len(arr1)):
 					ans_arr.append(arr1[i] + arr2[i])
-				self.assertEqual(array_of_values_by_linked_list(linked_list_sum), ans_arr)
+				self.assertEqual([x.value for x in linked_list_sum], ans_arr)
 			else:
 				self.assertTrue(linked_list_sum is None)
+
+	def test_iteration_regression(self):
+		orig_arr = [1,2,3,4,5]
+		linked_list = linked_list_by_array_of_values(orig_arr)
+		result_arr = []
+		for x in linked_list:
+			result_arr.append(x.value)
+		self.assertEqual(orig_arr, result_arr)
+
+	def test_iteration_empty_list(self):
+		orig_arr = []
+		linked_list = linked_list_by_array_of_values(orig_arr)
+		result_arr = []
+		for x in linked_list:
+			result_arr.append(x.value)
+		self.assertEqual(orig_arr, result_arr)
+
+	def test_iteration_random(self):
+		for i in range(1000):
+			orig_arr = []
+			for i in range(randint(0,100)):
+				orig_arr.append(randint(-10,+10))
+			linked_list = linked_list_by_array_of_values(orig_arr)
+			result_arr = []
+			for x in linked_list:
+				result_arr.append(x.value)
+			self.assertEqual(orig_arr, result_arr)
 
 if __name__ == '__main__':
 	unittest.main()

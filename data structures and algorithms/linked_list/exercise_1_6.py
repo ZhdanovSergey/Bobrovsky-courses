@@ -4,11 +4,27 @@ class Node:
         self.value = v
         self.next = None
 
+class LinkedListIterator:
+
+    def __init__(self, linked_list):
+        self.current_node = linked_list.head
+
+    def __next__(self):
+        node = self.current_node
+        if node is not None:
+            self.current_node = self.current_node.next
+            return node
+        else:
+            raise StopIteration
+
 class LinkedList:
 
     def __init__(self):
         self.head = None
         self.tail = None
+
+    def __iter__(self):
+        return LinkedListIterator(self)
 
     def add_in_tail(self, item):
         if self.head is None:
