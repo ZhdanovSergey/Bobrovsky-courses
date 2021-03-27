@@ -1,6 +1,7 @@
 import unittest
 from random import choice, randint
-from auto_check import Node, LinkedList2
+# from auto_check import Node, LinkedList2
+from additional_task import DummyNode, Node, LinkedList2
 
 def linked_list_2_by_values_arr(arr):
   linked_list = LinkedList2()
@@ -14,6 +15,21 @@ def linked_list_2_by_nodes_arr(arr):
   	linked_list.add_in_tail(x)
   return linked_list
 
+# def check_linked_list_2_correct(linked_list):
+# 	if (linked_list.head is None) and (linked_list.tail is None):
+# 		return True
+# 	else:
+# 		arr = [x for x in linked_list]
+# 		arr_reverse = []
+# 		node = linked_list.tail
+# 		while node is not None:
+# 			arr_reverse.append(node)
+# 			node = node.prev
+# 		return arr == arr_reverse[::-1] \
+# 			and linked_list.head.prev is None \
+# 			and linked_list.tail.next is None
+
+# dummy version
 def check_linked_list_2_correct(linked_list):
 	if (linked_list.head is None) and (linked_list.tail is None):
 		return True
@@ -21,12 +37,12 @@ def check_linked_list_2_correct(linked_list):
 		arr = [x for x in linked_list]
 		arr_reverse = []
 		node = linked_list.tail
-		while node is not None:
+		while isinstance(node, Node):
 			arr_reverse.append(node)
 			node = node.prev
 		return arr == arr_reverse[::-1] \
-			and linked_list.head.prev is None \
-			and linked_list.tail.next is None
+			and isinstance(linked_list.head.prev, DummyNode) \
+			and isinstance(linked_list.tail.next, DummyNode)
 
 class LinkedList2Tests(unittest.TestCase):
 
@@ -258,6 +274,29 @@ class LinkedList2Tests(unittest.TestCase):
 			linked_list.add_in_head(test_node)
 			self.assertTrue(check_linked_list_2_correct(linked_list))
 			self.assertEqual([x for x in linked_list], [test_node] + nodes_arr)
+
+	def test_add_in_tail_regression(self):
+		node1, node2, node3 = (Node(x) for x in [1,2,3])
+		linked_list = linked_list_2_by_nodes_arr([node1, node2])
+		linked_list.add_in_tail(node3)
+		self.assertTrue(check_linked_list_2_correct(linked_list))
+		self.assertEqual([x for x in linked_list], [node1, node2, node3])
+
+	def test_add_in_tail_of_empty_list(self):
+		node1 = Node(1)
+		linked_list = LinkedList2()
+		linked_list.add_in_tail(node1)
+		self.assertTrue(check_linked_list_2_correct(linked_list))
+		self.assertEqual([x for x in linked_list], [node1])
+
+	def test_add_in_tail_random(self):
+		for i in range(1000):
+			nodes_arr = [Node(randint(-10,+10)) for j in range(randint(0,100))]
+			linked_list = linked_list_2_by_nodes_arr(nodes_arr)
+			test_node = Node(100)
+			linked_list.add_in_tail(test_node)
+			self.assertTrue(check_linked_list_2_correct(linked_list))
+			self.assertEqual([x for x in linked_list], nodes_arr + [test_node])
 
 	def test_clean_regression(self):
 		linked_list = linked_list_2_by_values_arr([1,2,3,4,5])

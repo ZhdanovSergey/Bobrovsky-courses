@@ -1,26 +1,31 @@
-class Node:
-    def __init__(self, v):
-        self.value = v
+class DummyNode:
+    def __init__(self):
         self.prev = None
         self.next = None
+
+class Node(DummyNode):
+    def __init__(self, v):
+        super().__init__()
+        self.value = v
 
 class LinkedList2Iterator:
 
     def __init__(self, linked_list):
-        self.current_node = linked_list.head
+        self.current = linked_list.head
 
     def __next__(self):
-        node = self.current_node
-        if node is not None:
-            self.current_node = self.current_node.next
+        node = self.current
+        if isinstance(node, Node):
+            self.current = self.current.next
             return node
         else:
             raise StopIteration
 
-class LinkedList2:  
+class LinkedList2:
     def __init__(self):
         self.head = None
         self.tail = None
+        self._dummy = DummyNode()
 
     def __iter__(self):
         return LinkedList2Iterator(self)
@@ -28,22 +33,22 @@ class LinkedList2:
     def add_in_head(self, item):
         if self.head is None:
             self.tail = item
-            item.prev = None
-            item.next = None
+            self.tail.next = self._dummy
         else:
             self.head.prev = item
             item.next = self.head
         self.head = item
+        self.head.prev = self._dummy
 
     def add_in_tail(self, item):
         if self.head is None:
             self.head = item
-            item.prev = None
-            item.next = None
+            self.head.prev = self._dummy
         else:
             self.tail.next = item
             item.prev = self.tail
         self.tail = item
+        self.tail.next = self._dummy
 
     def find(self, val):
         for node in self:
@@ -61,24 +66,20 @@ class LinkedList2:
     def delete(self, val, all=False):
         for node in self:
             if node.value == val:
-                if (node is not self.head) and (node is not self.tail):
-                    node.prev.next = node.next
-                    node.next.prev = node.prev
-                else:
-                    if self.head is self.tail:
-                        self.clean()
-                    elif node is self.head:
-                        self.head = node.next
-                        self.head.prev = None
-                    else:
-                        self.tail = node.prev
-                        self.tail.next = None
+                node.prev.next = node.next
+                node.next.prev = node.prev
+                if self.head is self.tail:
+                    self.clean()
+                elif node is self.head:
+                    self.head = self.head.next
+                elif node is self.tail:
+                    self.tail = self.tail.prev
                 if not all:
                     break
 
     def len(self):
         count = 0
-        for node in self:
+        for x in self:
             count += 1
         return count
 
