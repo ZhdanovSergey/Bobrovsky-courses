@@ -8,19 +8,6 @@ class Node(DummyNode):
         super().__init__()
         self.value = v
 
-class LinkedList2Iterator:
-
-    def __init__(self, linked_list):
-        self.current = linked_list.head
-
-    def __next__(self):
-        node = self.current
-        if isinstance(node, Node):
-            self.current = self.current.next
-            return node
-        else:
-            raise StopIteration
-
 class LinkedList2:
     def __init__(self):
         self.head = None
@@ -28,7 +15,13 @@ class LinkedList2:
         self._dummy = DummyNode()
 
     def __iter__(self):
-        return LinkedList2Iterator(self)
+        return self._generator()
+
+    def _generator(self):
+        node = self.head
+        while isinstance(node, Node):
+            yield node
+            node = node.next
 
     def add_in_head(self, item):
         if self.head is None:
@@ -79,8 +72,7 @@ class LinkedList2:
 
     def len(self):
         count = 0
-        for x in self:
-            count += 1
+        for x in self: count += 1
         return count
 
     def insert(self, afterNode, newNode):
