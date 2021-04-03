@@ -5,7 +5,6 @@ def check_brackets_balance(string):
 	for x in string:
 		if x == '(':
 			stack.push(1)
-		elif x == ')':
-			if stack.pop() is None:
-				return False
+		elif x == ')' and stack.pop() is None:
+			return False
 	return stack.size() == 0
