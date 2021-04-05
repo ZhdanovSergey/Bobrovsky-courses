@@ -1,15 +1,15 @@
 class Queue:
   def __init__(self):
-    self.queue = []
+    self._store = []
 
   def enqueue(self, item):
-    self.queue.insert(0, item)
+    self._store.insert(0, item)
 
   def dequeue(self):
     if self.size() > 0:
-    	return self.queue.pop()
+    	return self._store.pop()
     else:
     	return None
 
   def size(self):
-    return len(self.queue)
+    return len(self._store)

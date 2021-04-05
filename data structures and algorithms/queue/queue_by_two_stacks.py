@@ -6,7 +6,7 @@ from stack.auto_check_tail import Stack
 
 class Queue_by_stacks():
   def __init__(self):
-    self.stack = Stack()
+    self._store = Stack()
 
   def _create_reverse_stack(self, stack):
     reverse_stack = Stack()
@@ -15,12 +15,12 @@ class Queue_by_stacks():
     return reverse_stack
 
   def enqueue(self, item):
-    reverse_stack = self._create_reverse_stack(self.stack)
+    reverse_stack = self._create_reverse_stack(self._store)
     reverse_stack.push(item)
-    self.stack = self._create_reverse_stack(reverse_stack)
+    self._store = self._create_reverse_stack(reverse_stack)
 
   def dequeue(self):
-    return self.stack.pop()
+    return self._store.pop()
 
   def size(self):
-    return self.stack.size()
+    return self._store.size()

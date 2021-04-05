@@ -7,36 +7,36 @@ class StackTest(unittest.TestCase):
 
 	def test_len(self):
 		stack = Stack()
-		stack.stack = [1,2,3]
+		stack._store = [1,2,3]
 		self.assertEqual(stack.size(), 3)
 
 	def test_push(self):
 		stack = Stack()
-		stack.stack = [1,2,3]
+		stack._store = [1,2,3]
 		stack.push(4)
-		self.assertEqual(stack.stack, [1,2,3,4])
+		self.assertEqual(stack._store, [1,2,3,4])
 
 	def test_pop(self):
 		stack = Stack()
-		stack.stack = [1,2,3]
+		stack._store = [1,2,3]
 		self.assertEqual(stack.pop(), 3)
-		self.assertEqual(stack.stack, [1,2])
+		self.assertEqual(stack._store, [1,2])
 
 	def test_pop_empty(self):
 		stack = Stack()
 		self.assertEqual(stack.pop(), None)
-		self.assertEqual(stack.stack, [])
+		self.assertEqual(stack._store, [])
 
 	def test_peek(self):
 		stack = Stack()
-		stack.stack = [1,2,3]
+		stack._store = [1,2,3]
 		self.assertEqual(stack.peek(), 3)
-		self.assertEqual(stack.stack, [1,2,3])
+		self.assertEqual(stack._store, [1,2,3])
 
 	def test_peek_empty(self):
 		stack = Stack()
 		self.assertEqual(stack.peek(), None)
-		self.assertEqual(stack.stack, [])
+		self.assertEqual(stack._store, [])
 
 	def test_bracket_balance(self):
 		self.assertTrue(check_brackets_balance('(()()())'))
