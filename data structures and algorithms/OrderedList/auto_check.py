@@ -60,6 +60,8 @@ class OrderedList:
         for node in self:
             if node.value == val:
                 return node
+            if self.__ascending == (self.compare(node.value, val) > 0):
+                return None
         return None
 
     def delete(self, val):
