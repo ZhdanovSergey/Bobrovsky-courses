@@ -1,5 +1,3 @@
-# наследуйте этот класс от HashTable
-# или расширьте его методами из HashTable
 class PowerSet:
 
 	def __init__(self):
