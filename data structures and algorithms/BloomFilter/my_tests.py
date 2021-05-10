@@ -1,5 +1,4 @@
 import unittest
-import random
 from code_for_auto_tests import BloomFilter
 
 
