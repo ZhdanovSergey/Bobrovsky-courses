@@ -1,0 +1,35 @@
+instance - baseConfigAxios
+// экземпляр из библиотеки axios с базовой конфигурацией http запроса
+
+isError - isErrorTriggered
+// флаг, показывающий что на поле формы должна быть отображена ошибка (поле невалидно и уже посещено пользователем)
+
+styles - formControlsStyles
+// CSS стили из компоненты FormControls
+
+pages - pageNumbers
+// массив с номерами страниц в пагинаторе
+
+portionNumber - currentPortionNumber
+// номер текущей порции страниц в пагинаторе
+
+leftPortionPageNumber - firstPageNumberOfCurrentPortion
+// первый номер страницы в текущей порции страниц в пагинаторе
+
+rightPortionPageNumber - lastPageNumberOfCurrentPortion
+// последний номер страницы в текущей порции страниц в пагинаторе
+
+button - submit_button
+// кнопка отправки формы
+
+input1 - first_name_input
+// поле формы для ввода имени
+
+input2 - last_name_input
+// поле формы для ввода фамилии
+
+input3 - city_input
+// поле формы для ввода города
+
+input4 - country_input
+// поле формы для ввода страны
