@@ -1,0 +1,22 @@
+6.1
+resultString - userFullName
+salarySum - yearSalary
+axiosInstance - baseConfigRequest
+
+6.2
+unfulfilledTasksQueue
+functionsCallStack
+usersSocialGraph
+urlAddressesHash
+
+6.3
+isErrorTriggered - в контексте функции, описывающей поле формы
+portionSize - в контексте функции, описывающей пагинатор
+totalItemsCount - в контексте функции, описывающей пагинатор
+
+6.4
+isFieldErrorTriggered - isErrorTriggered
+firstPageNumberOfCurrentPortion - firstNumOfPortion
+lastPageNumberOfCurrentPortion - lastNumOfPortion
+mstp - mapStateToProps
+mdtp - mapDispatchToProps
