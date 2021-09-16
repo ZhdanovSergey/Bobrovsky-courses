@@ -1,0 +1,11 @@
+11.5.1.
+SELECT Customers.*
+FROM Orders LEFT JOIN Customers
+ON Orders.CustomerID = Customers.CustomerID;
+
+11.5.2.
+SELECT 'Customer' AS Type, ContactName, City, Country
+FROM Customers
+UNION
+SELECT 'Supplier' AS Type, ContactName, City, Country
+FROM Suppliers;

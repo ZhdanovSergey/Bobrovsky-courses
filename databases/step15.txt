@@ -1,0 +1,9 @@
+15.7.
+CREATE TABLE Territories(
+TerritoryID int NOT NULL, TerritoryDescription nchar(50), RegionID int NOT NULL);
+
+INSERT INTO Regions
+VALUES(1, 'blabla', 'helptext');
+
+INSERT INTO Territories
+VALUES(1, 'blabla', 1);

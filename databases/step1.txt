@@ -1,0 +1,52 @@
+- Categories – категории товаров с подробным содержанием этих категорий;
+- Contacts – контакты клиентов/заказчиков, сотрудников и поставщиков;
+- Customers – данные о клиентах/заказчиках;
+- Employees – данные о сотрудниках;
+- Products – данные о товарах;
+- Suppliers – данные о поставщиках;
+- Shippers – Данные о доставщиках (службах доставки, грузоотправителях);
+- Region – данные о регионах;
+- Territories – данные о территориальных единицах регионов, городах;
+- Orders – данные о заказах;
+- Order Details – детали заказов;
+- EmployeeTerritories - какой сотрудник к какой территории прикреплён.
+
+
+Contacts (таблица с информацией о контактах - покупатели, поставщики, сотрудники и грузоперевозчики)
+ContactID, ContactType, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Extention, Fax, HomePage, PhotoPath, Photo
+
+CustomerCustomerDemo (пустая таблица, должна содержать информацию о том, к какому типу принадлежит тот или иной покупатель)
+CustomerID, CustomerTypeID
+
+CustomerDemographics (пустая таблица, должна сопоставлять тип покупателя с описанием покупателей)
+CustomerTypeID, CustomerDesc
+
+Customers (таблица с информацией о покупателях)
+CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax
+
+Employees (таблица с информацией о сотрудниках)
+EmployeeID, LastName, FirstName, Title, TitleOfCourtesy, BirthDate, HireDate, Address, City, Region, PostalCode, Country, HomePhone, Extention, Photo, Notes, ReportsTo, PhotoPath
+
+EmployeeTerritories (таблица, сопоставляющая сотрудников и место их работы)
+EmployeeID, TerritoryID
+
+OtherDetails (таблица с детализацией и стоимостными показателями заказов)
+OrderID, ProductID, UnitPrice, Quantity, Discount
+
+Orders (таблица с информацией о доставке заказов)
+OrderID, CustomerID, EmployeeID, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry
+
+Products (таблица с информацией о товарах)
+ProductID, ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued
+
+Region (таблица с сопоставлением id региона и его названием)
+RegionID, RegionDescription
+
+Shippers (таблица с информацией о грузоперевозчиках)
+ShipperID, CompanyName, Phone
+
+Suppliers (таблица с информацией о поставщиках)
+SupplierID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax, HomePage
+
+Territories (таблица с сопоставлением территорий и регионов)
+TerritoryID, TerritoryDescription, RegionID

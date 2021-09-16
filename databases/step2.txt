@@ -1,0 +1,21 @@
+Таблица 1	Тип связи	                                Таблица2
+Employees	многие ко многим(через EmployeeTerritories)	Territories
+Orders	        многие ко многим(через OrderDetails)	        Products
+Customers	один ко многим	                                Orders
+Employees	один ко многим	                                Orders
+Shippers	один ко многим	                                Orders
+Suppliers	один ко многим	                                Products
+Categories	один ко многим                                  Products
+Regions	        один ко многим                                  Territories
+
+
+Orders - OrderDetails => one-to-one
+Customers - Orders => one-to-many
+Employees - Orders => one-to-many
+Shippers - Orders => one-to-many
+Suppliers - Products => one-to-many
+Categories - Products => one-to-many
+Region - Contacts => one-to-many
+Region - Territories => one-to-many
+Employees - Territories => one-to-many
+Products - Orders => many-to-many

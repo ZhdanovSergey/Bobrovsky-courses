@@ -1,0 +1,18 @@
+13.3.1.
+UPDATE [Order Details]
+SET Discount = 0.2
+WHERE ProductID IN (
+SELECT ProductID FROM Products
+WHERE UnitsInStock > 50)
+
+13.3.2.
+UPDATE Contacts
+SET City = 'Piter', Country = 'Russia'
+WHERE City = 'Berlin' OR Country = 'Germany'
+
+13.3.3.
+INSERT INTO Shippers(CompanyName)
+VALUES('test')
+
+DELETE FROM Shippers
+WHERE ShipperID = (SELECT COUNT(*) FROM Shippers)

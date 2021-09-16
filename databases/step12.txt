@@ -1,0 +1,13 @@
+12.3.1.
+INSERT INTO Employees (LastName, FirstName)
+VALUES ('Poopa', 'Loopa');
+
+12.3.2.
+INSERT INTO EmployeeTerritories(EmployeeID, TerritoryID)
+VALUES (11, '06897');
+INSERT INTO EmployeeTerritories(EmployeeID, TerritoryID)
+VALUES (11, '19713');
+
+12.3.3.
+INSERT INTO Orders(CustomerID)
+VALUES ('VINET');

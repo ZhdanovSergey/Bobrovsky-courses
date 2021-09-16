@@ -1,0 +1,20 @@
+10.4.1.
+SELECT Products.ProductName, [Order Details].UnitPrice
+FROM Products JOIN [Order Details]
+ON Products.ProductID = [Order Details].ProductID
+	AND [Order Details].UnitPrice < 20;
+
+10.4.2.
+Выдача увеличилась потому что в результат запроса были добавлены записи с данными,
+которые не удовлетворяют условию, в таких записях есть данные только из одной таблицы,
+а поля из второй заполнены NULL
+
+10.4.3.
+Нужно добавить условие, согласно которому в результирующий набор попадут только те записи,
+которые удовлетворяют условию связи.
+
+
+10.4.4.
+SELECT Products.ProductName, [Order Details].UnitPrice
+FROM Products INNER JOIN [Order Details]
+ON Products.ProductID = [Order Details].ProductID
