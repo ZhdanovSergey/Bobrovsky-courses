@@ -61,7 +61,7 @@ class BST:
 			findedNode.LeftChild = newNode
 		else:
 			findedNode.RightChild = newNode
-  
+	
 	def FinMinMax(self, FromNode, FindMax):
 		# ищем максимальный/минимальный ключ в поддереве
 		# возвращается объект типа BSTNode
@@ -105,16 +105,16 @@ class BST:
 				parent.RightChild = successor
 
 	def _CountNodes(self, currentNode):
-    self._counter += 1
+		self._counter += 1
 
-    if currentNode.LeftChild is not None:
-    	self._CountNodes(currentNode.LeftChild)
+		if currentNode.LeftChild is not None:
+			self._CountNodes(currentNode.LeftChild)
 
-    if currentNode.RightChild is not None:
-    	self._CountNodes(currentNode.RightChild)
+		if currentNode.RightChild is not None:
+			self._CountNodes(currentNode.RightChild)
 
 	def Count(self):
 		self._counter = 0
-    self._CountNodes(self.Root)
-    
-    return self._counter
+		self._CountNodes(self.Root)
+		
+		return self._counter
