@@ -82,16 +82,15 @@ class BST:
 
 		node = findResult.Node
 		parent = node.Parent
-		isLeftChild = node.NodeKey < parent.NodeKey
 		successor = None
 
 		if node.LeftChild is None and node.RightChild is not None:
 			successor = node.RightChild
 
-		else if node.LeftChild is not None and node.RightChild is None:
+		elif node.LeftChild is not None and node.RightChild is None:
 			successor = node.LeftChild
 
-		else if node.LeftChild is not None and node.RightChild is not None:
+		elif node.LeftChild is not None and node.RightChild is not None:
 			successor = self.FinMinMax(node.RightChild, False)
 			successor.LeftChild = node.LeftChild
 			successor.RightChild = node.RightChild
@@ -99,10 +98,12 @@ class BST:
 		if successor is not None:
 			successor.Parent = parent
 
-		if isLeftChild:
-				parent.LeftChild = successor
-			else:
-				parent.RightChild = successor
+		if parent is None:
+			self.Root = successor
+		elif node.NodeKey < parent.NodeKey:
+			parent.LeftChild = successor
+		else:
+			parent.RightChild = successor
 
 	def _CountNodes(self, currentNode):
 		self._counter += 1
