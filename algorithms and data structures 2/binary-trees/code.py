@@ -116,6 +116,8 @@ class BST:
 
 	def Count(self):
 		self._counter = 0
-		self._CountNodes(self.Root)
+		
+		if self.Root is not None:
+			self._CountNodes(self.Root)
 		
 		return self._counter

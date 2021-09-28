@@ -28,5 +28,9 @@ class BSTTests(unittest.TestCase):
 		tree = BST(node)
 		self.assertEqual(tree.Count(), 1)
 
+	def test_CountEmpty(self):
+		tree = BST(None)
+		self.assertEqual(tree.Count(), 0)
+
 if __name__ == '__main__':
 	unittest.main()
