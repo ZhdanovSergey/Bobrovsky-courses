@@ -25,9 +25,9 @@ class BST:
 
 	def _FindNodeByKeyRecursive(self, key, currentNode):
 		if key < currentNode.NodeKey and currentNode.LeftChild is not None:
-			return self._FindNodeByKeyRecursive(self, key, currentNode.LeftChild)
+			return self._FindNodeByKeyRecursive(key, currentNode.LeftChild)
 		elif key > currentNode.NodeKey and currentNode.RightChild is not None:
-			return self._FindNodeByKeyRecursive(self, key, currentNode.RightChild)
+			return self._FindNodeByKeyRecursive(key, currentNode.RightChild)
 
 		result = BSTFind()
 		result.Node = currentNode
@@ -57,8 +57,12 @@ class BST:
 		findedNode = findResult.Node
 		newNode = BSTNode(key, val, findedNode)
 
-		if findResult.ToLeft:
+		if findedNode is None:
+			self.Root = newNode
+
+		elif findResult.ToLeft:
 			findedNode.LeftChild = newNode
+
 		else:
 			findedNode.RightChild = newNode
 	
@@ -81,7 +85,7 @@ class BST:
 			return False
 
 		node = findResult.Node
-		parent = node.Parent
+		parent = findResult.Node.Parent
 		successor = None
 
 		if node.LeftChild is None and node.RightChild is not None:
@@ -92,18 +96,28 @@ class BST:
 
 		elif node.LeftChild is not None and node.RightChild is not None:
 			successor = self.FinMinMax(node.RightChild, False)
+
+			if successor.NodeKey < successor.Parent.NodeKey:
+				successor.Parent.LeftChild = None
+			else:
+				successor.Parent.RightChild = None
+
 			successor.LeftChild = node.LeftChild
 			successor.RightChild = node.RightChild
-
-		if successor is not None:
-			successor.Parent = parent
+			successor.LeftChild.Parent = successor
+			successor.RightChild.Parent = successor
 
 		if parent is None:
 			self.Root = successor
+
 		elif node.NodeKey < parent.NodeKey:
 			parent.LeftChild = successor
+			
 		else:
 			parent.RightChild = successor
+
+		if successor is not None:
+			successor.Parent = parent
 
 	def _CountNodes(self, currentNode):
 		self._counter += 1
@@ -116,7 +130,7 @@ class BST:
 
 	def Count(self):
 		self._counter = 0
-		
+
 		if self.Root is not None:
 			self._CountNodes(self.Root)
 		
