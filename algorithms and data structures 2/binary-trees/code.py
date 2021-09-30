@@ -77,7 +77,25 @@ class BST:
 		else:
 			return self.FinMinMax(FromNode.LeftChild, FindMax)
 
-	
+	def _DeleteNodeWithMaxOneChild(self, node):
+		parent = node.Parent
+		successor = None
+
+		if node.RightChild is not None:
+			successor = node.RightChild
+		elif node.LeftChild is not None:
+			successor = node.LeftChild
+
+		if parent is None:
+			self.Root = successor
+		elif node.NodeKey < parent.NodeKey:
+			parent.LeftChild = successor
+		else:
+			parent.RightChild = successor
+
+		if successor is not None:
+			successor.Parent = parent
+
 	def DeleteNodeByKey(self, key):
 		# удаляем узел по ключу
 		findResult = self.FindNodeByKey(key)
@@ -86,43 +104,28 @@ class BST:
 			return False
 
 		node = findResult.Node
-		parent = findResult.Node.Parent
-		successor = None
 
-		if node.LeftChild is None and node.RightChild is not None:
-			successor = node.RightChild
-
-		elif node.LeftChild is not None and node.RightChild is None:
-			successor = node.LeftChild
-
-		elif node.LeftChild is not None and node.RightChild is not None:
+		if node.LeftChild is None or node.RightChild is None:
+			self._DeleteNodeWithMaxOneChild(node)
+		else:
+			parent = findResult.Node.Parent
 			successor = self.FinMinMax(node.RightChild, False)
-
-			if successor.NodeKey < successor.Parent.NodeKey:
-				successor.Parent.LeftChild = None
-			else:
-				successor.Parent.RightChild = None
-
+			self._DeleteNodeWithMaxOneChild(successor)
 			successor.LeftChild = node.LeftChild
 			successor.RightChild = node.RightChild
+			node.LeftChild.Parent = successor
 
-			if successor.LeftChild is not None:
-				successor.LeftChild.Parent = successor
-				
-			if successor.RightChild is not None:
-				successor.RightChild.Parent = successor
+			if node.RightChild is not None:
+				node.RightChild.Parent = successor
 
-		if parent is None:
-			self.Root = successor
-
-		elif node.NodeKey < parent.NodeKey:
-			parent.LeftChild = successor
-			
-		else:
-			parent.RightChild = successor
-
-		if successor is not None:
 			successor.Parent = parent
+
+			if parent is None:
+				self.Root = successor
+			elif successor.NodeKey < parent.NodeKey:
+				parent.LeftChild = successor
+			else:
+				parent.RightChild = successor
 
 	def _CountNodes(self, currentNode):
 		self._counter += 1
