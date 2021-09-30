@@ -1,4 +1,5 @@
 import unittest
+import random
 from code import BSTNode, BSTFind, BST
 
 
@@ -120,7 +121,7 @@ class BSTTests(unittest.TestCase):
 		self.assertFalse(tree.DeleteNodeByKey(1))
 
 	def test_DeleteNodeByKeyOneNode(self):
-		testKey = 1
+		testKey = 5
 		node = BSTNode(testKey, testKey, None)
 		tree = BST(node)
 		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
@@ -169,6 +170,19 @@ class BSTTests(unittest.TestCase):
 		self.assertTrue(nodes['3'].Parent is nodes['6'])
 		self.assertTrue(nodes['7'].Parent is nodes['6'])
 		self.assertTrue(nodes['7'].LeftChild is None)
+
+	def test_DeleteNodeByKeyRandom(self):
+		for _ in range(100):
+			(tree, nodes) = self.getTestTree()
+			arr = [2,3,4,5,6,7,8]
+			testKey = random.choice(arr)
+			self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
+			self.assertTrue(testKey in arr)
+			tree.DeleteNodeByKey(testKey)
+			arr.remove(testKey)
+			self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
+			self.assertFalse(testKey in arr)
+
 
 	def test_CountEmpty(self):
 		tree = BST(None)

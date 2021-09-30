@@ -81,6 +81,7 @@ class BST:
 	def DeleteNodeByKey(self, key):
 		# удаляем узел по ключу
 		findResult = self.FindNodeByKey(key)
+
 		if not findResult.NodeHasKey:
 			return False
 
@@ -104,8 +105,12 @@ class BST:
 
 			successor.LeftChild = node.LeftChild
 			successor.RightChild = node.RightChild
-			successor.LeftChild.Parent = successor
-			successor.RightChild.Parent = successor
+
+			if successor.LeftChild is not None:
+				successor.LeftChild.Parent = successor
+				
+			if successor.RightChild is not None:
+				successor.RightChild.Parent = successor
 
 		if parent is None:
 			self.Root = successor
