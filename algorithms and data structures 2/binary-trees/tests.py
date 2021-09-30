@@ -140,8 +140,7 @@ class BSTTests(unittest.TestCase):
 
 	def test_DeleteNodeByKeyOneNode(self):
 		testKey = 0
-		node = BSTNode(testKey, testKey, None)
-		tree = BST(node)
+		tree = BST(BSTNode(testKey, testKey, None))
 		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
 		tree.DeleteNodeByKey(testKey)
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
@@ -205,7 +204,7 @@ class BSTTests(unittest.TestCase):
 				self.assertFalse(testNode in nodes)
 				self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
 
-	def test_DeleteNodeByKeyParticularCase(self):
+	def test_DeleteNodeByKeyCase_7_10(self):
 		(tree, nodes) = self.getTestTree()
 		nodes[9].LeftChild = None
 		keyToDelete = 7
@@ -215,7 +214,15 @@ class BSTTests(unittest.TestCase):
 		self.assertTrue(tree.FindNodeByKey(problemKey).NodeHasKey)
 		tree.DeleteNodeByKey(keyToDelete)
 		self.assertFalse(tree.FindNodeByKey(keyToDelete).NodeHasKey)
-		self.assertTrue(tree.FindNodeByKey(problemKey).NodeHasKey, 'was problem here')
+		self.assertTrue(tree.FindNodeByKey(problemKey).NodeHasKey)
+
+	def test_DeleteNodeByKeyLastNode(self):
+		(tree, nodes) = self.getTestTree()
+		testKey = 14
+		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
+		tree.DeleteNodeByKey(testKey)
+		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
+		self.assertTrue(nodes[13].RightChild is None)
 
 	def test_CountEmpty(self):
 		tree = BST(None)
