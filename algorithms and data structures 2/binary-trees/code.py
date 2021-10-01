@@ -59,12 +59,12 @@ class BST:
 
 		if findedNode is None:
 			self.Root = newNode
-
 		elif findResult.ToLeft:
 			findedNode.LeftChild = newNode
-
 		else:
 			findedNode.RightChild = newNode
+
+		return True
 	
 	def FinMinMax(self, FromNode, FindMax):
 		# ищем максимальный/минимальный ключ в поддереве
@@ -107,25 +107,28 @@ class BST:
 
 		if node.LeftChild is None or node.RightChild is None:
 			self._DeleteNodeWithMaxOneChild(node)
+			return True
+
+		parent = findResult.Node.Parent
+		successor = self.FinMinMax(node.RightChild, False)
+		self._DeleteNodeWithMaxOneChild(successor)
+		successor.LeftChild = node.LeftChild
+		successor.RightChild = node.RightChild
+		node.LeftChild.Parent = successor
+
+		if node.RightChild is not None:
+			node.RightChild.Parent = successor
+
+		successor.Parent = parent
+
+		if parent is None:
+			self.Root = successor
+		elif successor.NodeKey < parent.NodeKey:
+			parent.LeftChild = successor
 		else:
-			parent = findResult.Node.Parent
-			successor = self.FinMinMax(node.RightChild, False)
-			self._DeleteNodeWithMaxOneChild(successor)
-			successor.LeftChild = node.LeftChild
-			successor.RightChild = node.RightChild
-			node.LeftChild.Parent = successor
+			parent.RightChild = successor
 
-			if node.RightChild is not None:
-				node.RightChild.Parent = successor
-
-			successor.Parent = parent
-
-			if parent is None:
-				self.Root = successor
-			elif successor.NodeKey < parent.NodeKey:
-				parent.LeftChild = successor
-			else:
-				parent.RightChild = successor
+		return True
 
 	def _CountNodes(self, currentNode):
 		self._counter += 1

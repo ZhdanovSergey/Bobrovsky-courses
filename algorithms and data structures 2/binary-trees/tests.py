@@ -87,14 +87,14 @@ class BSTTests(unittest.TestCase):
 		tree = BST(None)
 		testKey = 1
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
-		tree.AddKeyValue(testKey, testKey)
+		self.assertTrue(tree.AddKeyValue(testKey, testKey))
 		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
 
 	def test_AddKeyValueToLeft(self):
 		(tree, nodes) = self.getTestTree()
 		testKey = -1
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
-		tree.AddKeyValue(testKey, testKey)
+		self.assertTrue(tree.AddKeyValue(testKey, testKey))
 		findResult = tree.FindNodeByKey(testKey)
 		self.assertTrue(findResult.NodeHasKey)
 		self.assertTrue(nodes[0].LeftChild is findResult.Node)
@@ -103,7 +103,7 @@ class BSTTests(unittest.TestCase):
 		(tree, nodes) = self.getTestTree()
 		testKey = 15
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
-		tree.AddKeyValue(testKey, testKey)
+		self.assertTrue(tree.AddKeyValue(testKey, testKey))
 		findResult = tree.FindNodeByKey(testKey)
 		self.assertTrue(findResult.NodeHasKey)
 		self.assertTrue(nodes[14].RightChild is findResult.Node)
@@ -142,7 +142,7 @@ class BSTTests(unittest.TestCase):
 		testKey = 0
 		tree = BST(BSTNode(testKey, testKey, None))
 		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
-		tree.DeleteNodeByKey(testKey)
+		self.assertTrue(tree.DeleteNodeByKey(testKey))
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
 		self.assertTrue(tree.Root is None)
 
@@ -150,7 +150,7 @@ class BSTTests(unittest.TestCase):
 		(tree, nodes) = self.getTestTree()
 		testKey = 4
 		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
-		tree.DeleteNodeByKey(testKey)
+		self.assertTrue(tree.DeleteNodeByKey(testKey))
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
 		self.assertTrue(nodes[5].LeftChild is None)
 
@@ -159,7 +159,7 @@ class BSTTests(unittest.TestCase):
 		testKey = 3
 		nodes[testKey].RightChild = None
 		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
-		tree.DeleteNodeByKey(testKey)
+		self.assertTrue(tree.DeleteNodeByKey(testKey))
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
 		self.assertTrue(nodes[7].LeftChild is nodes[1])
 		self.assertTrue(nodes[1].Parent is nodes[7])
@@ -169,7 +169,7 @@ class BSTTests(unittest.TestCase):
 		testKey = 11
 		nodes[testKey].LeftChild = None
 		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
-		tree.DeleteNodeByKey(testKey)
+		self.assertTrue(tree.DeleteNodeByKey(testKey))
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
 		self.assertTrue(nodes[7].RightChild is nodes[13])
 		self.assertTrue(nodes[13].Parent is nodes[7])
@@ -178,7 +178,7 @@ class BSTTests(unittest.TestCase):
 		(tree, nodes) = self.getTestTree()
 		testKey = 3
 		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
-		tree.DeleteNodeByKey(testKey)
+		self.assertTrue(tree.DeleteNodeByKey(testKey))
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
 		self.assertTrue(nodes[7].LeftChild is nodes[4])
 		self.assertTrue(nodes[4].Parent is nodes[7])
@@ -197,11 +197,9 @@ class BSTTests(unittest.TestCase):
 				testNode = random.choice(nodes)
 				testKey = testNode.NodeKey
 				deletedKeys.append(testKey)
-				self.assertTrue(testNode in nodes)
 				self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey, deletedKeys)
 				nodes.remove(testNode)
-				tree.DeleteNodeByKey(testKey)
-				self.assertFalse(testNode in nodes)
+				self.assertTrue(tree.DeleteNodeByKey(testKey))
 				self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
 
 	def test_DeleteNodeByKeyCase_7_10(self):
@@ -212,7 +210,7 @@ class BSTTests(unittest.TestCase):
 
 		self.assertTrue(tree.FindNodeByKey(keyToDelete).NodeHasKey)
 		self.assertTrue(tree.FindNodeByKey(problemKey).NodeHasKey)
-		tree.DeleteNodeByKey(keyToDelete)
+		self.assertTrue(tree.DeleteNodeByKey(keyToDelete))
 		self.assertFalse(tree.FindNodeByKey(keyToDelete).NodeHasKey)
 		self.assertTrue(tree.FindNodeByKey(problemKey).NodeHasKey)
 
@@ -220,7 +218,7 @@ class BSTTests(unittest.TestCase):
 		(tree, nodes) = self.getTestTree()
 		testKey = 14
 		self.assertTrue(tree.FindNodeByKey(testKey).NodeHasKey)
-		tree.DeleteNodeByKey(testKey)
+		self.assertTrue(tree.DeleteNodeByKey(testKey))
 		self.assertFalse(tree.FindNodeByKey(testKey).NodeHasKey)
 		self.assertTrue(nodes[13].RightChild is None)
 
