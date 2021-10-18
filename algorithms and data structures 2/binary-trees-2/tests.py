@@ -5,29 +5,29 @@ from code import aBST
 
 class aBSTTests(unittest.TestCase):
 	def getTestTree(self):
-		tree = aBST(4)
+		tree = aBST(3)
 		tree.Tree = [50, 25, 75, None, 37, 62, 84, None, None, 31, 43, 55, None, None, 92]
 		return tree
 
 	def test_FindKeyIndexEmptyTree(self):
-		tree = aBST(0)
+		tree = aBST(-1)
 		result = tree.FindKeyIndex(1)
 		self.assertTrue(result is None)
 
 	def test_FindKeyIndexOneLevelSuccess(self):
-		tree = aBST(1)
+		tree = aBST(0)
 		testKey = 1
 		tree.Tree[0] = testKey
 		result = tree.FindKeyIndex(testKey)
 		self.assertEqual(result, 0)
 
 	def test_FindKeyIndexOneLevelEmpty(self):
-		tree = aBST(1)
+		tree = aBST(0)
 		result = tree.FindKeyIndex(1)
 		self.assertEqual(result, 0)
 
 	def test_FindKeyIndexOneLevelUnsuccess(self):
-		tree = aBST(1)
+		tree = aBST(0)
 		tree.Tree[0] = 1
 		result = tree.FindKeyIndex(2)
 		self.assertTrue(result is None)
@@ -58,23 +58,23 @@ class aBSTTests(unittest.TestCase):
 		self.assertEqual(result, None)
 
 	def test_AddKeyEmptyTree(self):
-		tree = aBST(0)
+		tree = aBST(-1)
 		result = tree.AddKey(1)
 		self.assertEqual(result, -1)
 
 	def test_AddKeyOneLevelSuccess(self):
-		tree = aBST(1)
+		tree = aBST(0)
 		result = tree.AddKey(1)
 		self.assertEqual(result, 0)
 
 	def test_AddKeyOneLevelAlreadyExist(self):
-		tree = aBST(1)
+		tree = aBST(0)
 		tree.Tree[0] = 0
 		result = tree.AddKey(0)
 		self.assertEqual(result, -1)
 
 	def test_AddKeyOneLevelOutOfTree(self):
-		tree = aBST(1)
+		tree = aBST(0)
 		tree.Tree[0] = 0
 		result = tree.AddKey(1)
 		self.assertEqual(result, -1)
