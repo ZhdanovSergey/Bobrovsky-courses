@@ -59,19 +59,19 @@ class aBSTTests(unittest.TestCase):
 
 	def test_AddKeyEmptyTree(self):
 		tree = aBST(-1)
-		result = tree.AddKey(1)
+		result = tree.AddKey(0)
 		self.assertEqual(result, -1)
 
 	def test_AddKeyOneLevelSuccess(self):
 		tree = aBST(0)
-		result = tree.AddKey(1)
+		result = tree.AddKey(0)
 		self.assertEqual(result, 0)
 
 	def test_AddKeyOneLevelAlreadyExist(self):
 		tree = aBST(0)
 		tree.Tree[0] = 0
 		result = tree.AddKey(0)
-		self.assertEqual(result, -1)
+		self.assertEqual(result, 0)
 
 	def test_AddKeyOneLevelOutOfTree(self):
 		tree = aBST(0)
@@ -87,12 +87,12 @@ class aBSTTests(unittest.TestCase):
 	def test_AddKeyAlreadyExist(self):
 		tree = self.getTestTree()
 		result = tree.AddKey(62)
-		self.assertEqual(result, -1)
+		self.assertEqual(result, 5)
 
 	def test_AddKeyAlreadyExistLeaf(self):
 		tree = self.getTestTree()
 		result = tree.AddKey(92)
-		self.assertEqual(result, -1)
+		self.assertEqual(result, 14)
 
 	def test_AddKeyOutOfTree(self):
 		tree = self.getTestTree()

@@ -31,11 +31,11 @@ class aBST:
 		# добавляем ключ в массив
 		findResult = self.FindKeyIndex(key)
 
-		if findResult is None or \
-			findResult > 0 or \
-			findResult == 0 and self.Tree[0] is not None:
+		if findResult is None:
 			return -1
 
-		self.Tree[-findResult] = key
-		return -findResult
+		if findResult < 0 or (findResult == 0 and self.Tree[0] is None):
+			self.Tree[abs(findResult)] = key
+			
+		return abs(findResult)
 		# индекс добавленного/существующего ключа или -1 если не удалось
