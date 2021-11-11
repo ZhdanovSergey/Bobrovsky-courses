@@ -4,12 +4,6 @@ from code import BSTNode, BalancedBST
 
 
 class BalancedBSTTests(unittest.TestCase):
-	def checkTreeCorrespondsToArray(self, tree, array):
-		def checkCorrespondsRecursively(current_node, start_index, end_index):
-			pass
-
-		return False
-
 	def test_GenerateTreeEmpty(self):
 		result = BalancedBST().GenerateTree([])
 		self.assertTrue(result.Root is None)
