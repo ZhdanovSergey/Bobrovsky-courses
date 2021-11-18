@@ -55,7 +55,6 @@ class Heap:
 
 		max_key = self.HeapArray[0]
 		self.HeapArray[0] = None
-		# last_key_index = next((index for index, key in reversed(enumerate(self.HeapArray)) if key is not None), None)
 		last_key_index = next((index for index, key in reversed(list(enumerate(self.HeapArray))) if key is not None), None)
 
 		if (last_key_index is not None):
