@@ -10,10 +10,6 @@ class SimpleGraph:
 		self.m_adjacency = [[0] * size for _ in range(size)]
 		self.vertex = [None] * size
 
-	def _removeAllVertexEdges(self, v):
-		for i in range(self.max_vertex):
-			self._setAdjacencyValue(v, i, 0)
-
 	def _setAdjacencyValue(self, v1, v2, value):
 		self.m_adjacency[v1][v2] = value
 		self.m_adjacency[v2][v1] = value
@@ -29,17 +25,17 @@ class SimpleGraph:
 			return False
 
 		self.vertex[new_index] = Vertex(v)
-		self._removeAllVertexEdges(new_index)
 
 		return True
 
-	
 	# здесь и далее, параметры v -- индекс вершины
 	# в списке  vertex
 	def RemoveVertex(self, v):
 		# ваш код удаления вершины со всеми её рёбрами
 		self.vertex[v] = None
-		self._removeAllVertexEdges(v)
+
+		for i in range(self.max_vertex):
+			self._setAdjacencyValue(v, i, 0)
 	
 	def IsEdge(self, v1, v2):
 		# True если есть ребро между вершинами v1 и v2
