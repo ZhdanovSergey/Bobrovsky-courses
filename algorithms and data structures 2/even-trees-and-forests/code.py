@@ -32,6 +32,7 @@ class SimpleTree:
 	def _CountFilteredNodes(self, filter_function):
 		def countFilteredNodesRecursively(current_node, filter_function):
 			if filter_function(current_node):
+				nonlocal counter
 				counter += 1
 			for node in current_node.Children:
 				countFilteredNodesRecursively(node, filter_function)
