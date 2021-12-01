@@ -17,6 +17,12 @@ class SimpleGraph:
 		self.m_adjacency[v1][v2] = value
 		self.m_adjacency[v2][v1] = value
 
+	def _removeHits(self):
+		for vertex in self.vertex:
+			if vertex is None:
+				break
+			vertex.Hit = False
+
 		
 	def AddVertex(self, v):
 		# ваш код добавления новой вершины
@@ -77,12 +83,7 @@ class SimpleGraph:
 
 			stack.pop()
 
-
-		for vertex in self.vertex:
-			if vertex is None:
-				break
-			vertex.Hit = False
-
 		stack = []
+		self._removeHits()
 		findPathRecursively(VFrom)
 		return stack
