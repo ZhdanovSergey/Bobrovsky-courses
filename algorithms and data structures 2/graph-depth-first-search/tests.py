@@ -83,7 +83,7 @@ class HeapTests(unittest.TestCase):
 		graph.AddVertex(0)
 		graph.AddEdge(0, 0)
 		result = graph.DepthFirstSearch(0, 0)
-		self.assertTrue(result == [0, 0], result)
+		self.assertTrue(result == [graph.vertex[0], graph.vertex[0]], result)
 
 
 	def test_DepthFirstSearchTwoVertexWithoutEdge(self):
@@ -98,7 +98,7 @@ class HeapTests(unittest.TestCase):
 		self.addVertexes(graph, [0, 1])
 		graph.AddEdge(0, 1)
 		result = graph.DepthFirstSearch(0, 1)
-		self.assertTrue(result == [0, 1], result)
+		self.assertTrue(result == [graph.vertex[0], graph.vertex[1]], result)
 
 
 	def test_DepthFirstSearchThreeVertexWithoutEdge(self):
@@ -114,7 +114,7 @@ class HeapTests(unittest.TestCase):
 		graph.AddEdge(0, 1)
 		graph.AddEdge(0, 2)
 		result = graph.DepthFirstSearch(0, 2)
-		self.assertTrue(result == [0, 2], result)
+		self.assertTrue(result == [graph.vertex[0], graph.vertex[2]], result)
 
 
 	def test_DepthFirstSearchThreeVertexWithTwoEdges(self):
@@ -123,7 +123,7 @@ class HeapTests(unittest.TestCase):
 		graph.AddEdge(0, 1)
 		graph.AddEdge(1, 2)
 		result = graph.DepthFirstSearch(0, 2)
-		self.assertTrue(result == [0, 1, 2], result)
+		self.assertTrue(result == [graph.vertex[0], graph.vertex[1], graph.vertex[2]], result)
 
 
 if __name__ == '__main__':

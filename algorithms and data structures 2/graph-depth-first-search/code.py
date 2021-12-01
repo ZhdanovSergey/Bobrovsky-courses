@@ -60,12 +60,13 @@ class SimpleGraph:
 		# возвращается список узлов -- путь из VFrom в VTo
 		# или [] если пути нету
 		def findPathRecursively(current_index):
-			self.vertex[current_index].Hit = True
-			stack.append(current_index)
+			current_vertex = self.vertex[current_index]
+			current_vertex.Hit = True
+			stack.append(current_vertex)
 
 			for index in range(self.max_vertex):
 				if self.IsEdge(current_index, index) and index == VTo:
-					stack.append(index)
+					stack.append(self.vertex[index])
 					return stack
 
 			for index in range(self.max_vertex):
