@@ -138,7 +138,7 @@ class HeapTests(unittest.TestCase):
         graph.AddVertex(0)
         graph.AddEdge(0, 0)
         result = graph.BreadthFirstSearch(0, 0)
-        self.assertTrue(result == [graph.vertex[0], graph.vertex[0]], result)
+        self.assertTrue(result == [graph.vertex[0]], result)
 
 
     def test_BreadthFirstSearchTwoVertexWithoutEdge(self):
@@ -190,6 +190,15 @@ class HeapTests(unittest.TestCase):
         graph.AddEdge(2, 3)
         graph.AddEdge(3, 4)
         graph.AddEdge(4, 0)
+        result = graph.BreadthFirstSearch(0, 2)
+        self.assertTrue(result == [graph.vertex[0], graph.vertex[1], graph.vertex[2]], result)
+        
+    def test_BreadthFirstSearchWithCycle(self):
+        graph = SimpleGraph(5)
+        self.addVertexes(graph, [0, 1, 2])
+        graph.AddEdge(0, 1)
+        graph.AddEdge(1, 1)
+        graph.AddEdge(1, 2)
         result = graph.BreadthFirstSearch(0, 2)
         self.assertTrue(result == [graph.vertex[0], graph.vertex[1], graph.vertex[2]], result)
 

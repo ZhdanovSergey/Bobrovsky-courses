@@ -98,10 +98,11 @@ class SimpleGraph:
         # узлы задаются позициями в списке vertex
         # возвращается список узлов -- путь из VFrom в VTo
         # или [] если пути нету
-        def BreadthFirstSearchRecursively(current_index):           
+        def BreadthFirstSearchRecursively(current_index):            
             for index in self._getAdjacentIndexesGenerator(current_index):
                 if not self.vertex[index].Hit:
                     prevIndexes[index] = current_index
+                    self.vertex[index].Hit = True
                     
                     if index == VTo:
                         return True
@@ -111,13 +112,12 @@ class SimpleGraph:
             if search_queue.empty():
                 return False
                 
-            self.vertex[current_index].Hit = True
             return BreadthFirstSearchRecursively(search_queue.get())
             
-        def GetPathByPrevIndexes():            
-            if VFrom == VTo == prevIndexes[VTo]:
-                return [self.vertex[VFrom]] * 2
-                
+        def GetPathByPrevIndexes():
+            if VFrom == VTo:
+                return [self.vertex[VFrom]]
+            
             path = []
             current_index = VTo
             
@@ -131,7 +131,9 @@ class SimpleGraph:
         search_queue = queue.Queue()
         prevIndexes = [None] * self.max_vertex
         self._resetAllHits()
+        self.vertex[VFrom].Hit = True
+        
         if BreadthFirstSearchRecursively(VFrom):
             return GetPathByPrevIndexes()
-        
+            
         return []
