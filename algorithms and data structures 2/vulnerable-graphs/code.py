@@ -30,8 +30,8 @@ class SimpleGraph:
             self.vertex[index].Hit = False
             
             
-    def _getAdjacentIndexesGenerator(self, gen_index):
-        return (index for index in range(self.max_vertex) if self.IsEdge(gen_index, index))
+    def _getAdjIndexGen(self, gen_index, cond_func = lambda i: True):
+        return (i for i in range(self._getVerticesCount()) if self.IsEdge(gen_index, i) and cond_func(i))
         
         
     def AddVertex(self, v):
@@ -78,17 +78,17 @@ class SimpleGraph:
             current_vertex = self.vertex[current_index]
             current_vertex.Hit = True
             stack.append(current_vertex)
+            VTo_match_adj_gen = (i for i in self._getAdjIndexGen(current_index, lambda i: i == VTo))
+            not_hit_adj_gen = (i for i in self._getAdjIndexGen(current_index, lambda i: not self.vertex[i].Hit))
             
-            for index in self._getAdjacentIndexesGenerator(current_index):
-                if index == VTo:
-                    stack.append(self.vertex[index])
-                    return stack
+            for index in VTo_match_adj_gen:
+                stack.append(self.vertex[index])
+                return stack
                     
-            for index in self._getAdjacentIndexesGenerator(current_index):
-                if not self.vertex[index].Hit:
-                    path = DepthFirstSearchhRecursively(index)
-                    if path is not None:
-                        return path
+            for index in not_hit_adj_gen:
+                path = DepthFirstSearchhRecursively(index)
+                if path is not None:
+                    return path
 
             stack.pop()
 
@@ -109,7 +109,7 @@ class SimpleGraph:
             current_index = start_index
 
             while True:
-                for index in self._getAdjacentIndexesGenerator(current_index):
+                for index in self._getAdjIndexGen(current_index):
                     if not self.vertex[index].Hit:
                         prevIndexes[index] = current_index
                         
@@ -151,7 +151,18 @@ class SimpleGraph:
     
     # def WeakVertices(self):
         # # возвращает список узлов вне треугольников
-        # strong_vertices = []
+        # strong_indexes = set()
+        # weak_indexes = set()
         
-        # for vertex in range(self._getVerticesCount())
+        # for first_index in range(self._getVerticesCount())
+            # if first_index not in strong_indexes:
+                # for second_index in self._getAdjacentIndexesGenerator(first_index):
+                    # if second_index not in weak_indexes\
+                        # and second_index != first_index:
+                        # for third_index in range(self._getVerticesCount()):
+                            # if third_index not in weak_indexes\
+                                # and third_index != second_index\
+                                # and third_index != first_index:
+                                
+        
         # return []
