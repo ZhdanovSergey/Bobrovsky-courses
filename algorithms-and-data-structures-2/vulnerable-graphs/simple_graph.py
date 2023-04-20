@@ -161,6 +161,7 @@ class SimpleGraph:
 					return True
 
 			weak_indexes.add(first_index)
+			return False
 
 		strong_indexes = set()
 		weak_indexes = set()

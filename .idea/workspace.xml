@@ -2,65 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="747c0925-97c4-49b0-95d1-0cf82652bb0e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/balanced-binary-trees-2/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/balanced-binary-trees-2/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/balanced-binary-trees/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/balanced-binary-trees/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/binary-trees-2/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/binary-trees-2/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/binary-trees/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/binary-trees/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/even-trees-and-forests/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/even-trees-and-forests/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/graph-breadth-first-search/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/graph-breadth-first-search/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/graph-depth-first-search/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/graph-depth-first-search/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/graphs/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/graphs/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/heaps/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/heaps/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/tree-travers-ways/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/tree-travers-ways/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/trees/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/trees/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/vulnerable-graphs/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures 2/vulnerable-graphs/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/BloomFilter/code_for_auto_tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/BloomFilter/my_tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/NativeCache/code_for_auto_tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/NativeCache/my_tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/NativeDictionary/code_for_auto_tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/NativeDictionary/my_tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/OrderedList/auto_check.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/OrderedList/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/PowerSet/code_for_auto_tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/PowerSet/my_tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/deque/auto_check.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/deque/palindrome_func.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/deque/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/dynamic_arrays/auto_checked.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/dynamic_arrays/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/hashing/auto_check.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/hashing/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/linked_list/exercise_1_6.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/linked_list/exercise_8.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/linked_list/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/linked_list2/additional_task.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/linked_list2/auto_check.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/linked_list2/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/queue/auto_check.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/queue/queue_by_two_stacks.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/queue/rotate_func.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/queue/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/stack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/stack/auto_check_head.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/stack/auto_check_tail.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/stack/brackets_func.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/stack/postfix.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms and data structures/stack/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clean code/variable_names.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clean code/variable_names_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algorithms-and-data-structures-2/vulnerable-graphs/simple_graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms-and-data-structures-2/vulnerable-graphs/simple_graph.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,37 +94,37 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="989" y="295" key="#tests/0.0.2560.1400@0.0.2560.1400" timestamp="1640196838954" />
-    <state width="2539" height="492" key="GridCell.Tab.0.bottom" timestamp="1640198491227">
+    <state width="2539" height="492" key="GridCell.Tab.0.bottom" timestamp="1640200234601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2539" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1640198491227" />
-    <state width="2539" height="492" key="GridCell.Tab.0.center" timestamp="1640198491227">
+    <state width="2539" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1640200234601" />
+    <state width="2539" height="492" key="GridCell.Tab.0.center" timestamp="1640200234601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2539" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1640198491227" />
-    <state width="2539" height="492" key="GridCell.Tab.0.left" timestamp="1640198491227">
+    <state width="2539" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1640200234601" />
+    <state width="2539" height="492" key="GridCell.Tab.0.left" timestamp="1640200234601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2539" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1640198491227" />
-    <state width="2539" height="492" key="GridCell.Tab.0.right" timestamp="1640198491227">
+    <state width="2539" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1640200234601" />
+    <state width="2539" height="492" key="GridCell.Tab.0.right" timestamp="1640200234601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2539" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1640198491227" />
-    <state width="2539" height="492" key="GridCell.Tab.1.bottom" timestamp="1640198491227">
+    <state width="2539" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1640200234601" />
+    <state width="2539" height="492" key="GridCell.Tab.1.bottom" timestamp="1640200234602">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2539" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1640198491227" />
-    <state width="2539" height="492" key="GridCell.Tab.1.center" timestamp="1640198491227">
+    <state width="2539" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1640200234602" />
+    <state width="2539" height="492" key="GridCell.Tab.1.center" timestamp="1640200234601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2539" height="492" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1640198491227" />
-    <state width="2539" height="492" key="GridCell.Tab.1.left" timestamp="1640198491227">
+    <state width="2539" height="492" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1640200234601" />
+    <state width="2539" height="492" key="GridCell.Tab.1.left" timestamp="1640200234601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2539" height="492" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1640198491227" />
-    <state width="2539" height="492" key="GridCell.Tab.1.right" timestamp="1640198491227">
+    <state width="2539" height="492" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1640200234601" />
+    <state width="2539" height="492" key="GridCell.Tab.1.right" timestamp="1640200234601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2539" height="492" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1640198491227" />
+    <state width="2539" height="492" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1640200234601" />
   </component>
 </project>
