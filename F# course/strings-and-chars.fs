@@ -4,7 +4,7 @@ let rec pow = function
   | (s,n) -> s + pow(s,n-1)
   
 // 17.2
-let rec isIthChar = function
+let isIthChar = function
   | (s,n,c) when n < 0 || n >= (String.length s) -> false
   | (s,n,c) -> s.[n] = c
 
