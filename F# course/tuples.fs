@@ -18,3 +18,22 @@ let (.-.) x y =
   let diff1 = if res2 < 0 then int(System.Math.Ceiling(float(-res2) / 20.0)) else 0
   let res1 = x1 - y1 - diff1
   res1, res2 + diff1 * 20, res3 + diff2 * 12
+
+// 23.4.2
+let (.+) x y =
+  let (a, b) = x
+  let (c, d) = y
+  (a + c, b + d)
+  
+let (.-) x y =
+  let (c, d) = y
+  x .+ (-c, -d)
+  
+let (.*) x y =
+  let (a, b) = x
+  let (c, d) = y
+  (a*c - b*d, b*c + a*d)
+  
+let (./) x y =
+  let (c, d) = y
+  x .* (c/(c*c+d*d), -d/(c*c+d*d))
