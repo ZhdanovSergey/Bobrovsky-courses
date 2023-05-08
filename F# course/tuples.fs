@@ -1,39 +1,15 @@
-open System
+let rec iter = function
+    | (a, b, c) when c > 11 -> iter (a, b + (c / 12), c % 12)
+    | (a, b, c) when b > 19 -> iter (a + (b / 20), b % 20, c)
+    | (a, b, c) when c < 0 && b > 0 -> iter (a, b - 1, c + 12)
+    | (a, b, c) when b < 0 && a > 0 -> iter (a - 1, b + 20, c)
+    | (a, b, c) when c < 0 && a > 0 -> iter (a - 1, b + 19, c + 12)
+    | (a, b, c) -> (a, b, c)
 
-// 23.4.1
-let (.+.) x y =
-  let (x1,x2,x3) = x
-  let (y1,y2,y3) = y
-  let res3 = x3 + y3
-  let res2 = x2 + y2 + res3 / 12
-  let res1 = x1 + y1 + res2 / 20
-  res1, res2 % 20, res3 % 12
-  
-let (.-.) x y =
-  let (x1,x2,x3) = x
-  let (y1,y2,y3) = y
-  let res3 = x3 - y3
-  let diff2 = if res3 < 0 then int(System.Math.Ceiling(float(-res3) / 12.0)) else 0
-  let res2 = x2 - y2 - diff2
-  let diff1 = if res2 < 0 then int(System.Math.Ceiling(float(-res2) / 20.0)) else 0
-  let res1 = x1 - y1 - diff1
-  res1, res2 + diff1 * 20, res3 + diff2 * 12
+let (.+.) (a, b, c) (x, y, z) = iter (a + x, b + y, c + z)
+let (.-.) (a, b, c) (x, y, z) = iter (a - x, b - y, c - z)
 
-// 23.4.2
-let (.+) x y =
-  let (a, b) = x
-  let (c, d) = y
-  (a + c, b + d)
-  
-let (.-) x y =
-  let (c, d) = y
-  x .+ (-c, -d)
-  
-let (.*) x y =
-  let (a, b) = x
-  let (c, d) = y
-  (a*c - b*d, b*c + a*d)
-  
-let (./) x y =
-  let (c, d) = y
-  x .* (c/(c*c+d*d), -d/(c*c+d*d))
+let (.+) (a, b) (c, d) = (a + c, b + d)
+let (.-) (a, b) (c, d) = (a - c, b - d)
+let (.*) (a, b) (c, d) = (a * c - b * d, b  * c + a * d)
+let (./) (a, b) (c, d) = (a, b) .* (c / (c * c + d * d) , -d / (c * c + d * d))
