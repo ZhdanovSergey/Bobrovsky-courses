@@ -1,12 +1,12 @@
 // 39.1
 let rmodd list =
   let rec rmoddRec = function
-    | ([], acc) -> acc
-    | (list, acc) when (List.length acc) % 2 = 0 -> rmoddRec(list, 0 :: acc)
-    | (head :: tail, acc) -> rmoddRec(tail, head :: acc)
+    | ([], acc, i) -> acc
+    | (head :: tail, acc, i) when i % 2 = 1 -> rmoddRec(tail, head :: acc, i + 1)
+    | (head :: tail, acc, i) -> rmoddRec(tail, acc, i + 1)
   
-  List.rev (rmoddRec(list, []))
-  
+  List.rev (rmoddRec(list, [], 0))
+
 // 39.2
 let del_even list =
   let rec del_even_rec = function
