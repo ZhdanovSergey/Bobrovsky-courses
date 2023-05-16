@@ -1,20 +1,15 @@
 // 34.1
-let upto n =
-  let rec uptoRec = function
-    | (k, acc) when k <= 0 -> acc
-    | (k, acc) -> uptoRec(k-1, k :: acc)
-  uptoRec(n, [])
+let rec upto = function
+ | 1 -> [1]
+ | n -> upto(n - 1) @ [n]
   
 // 34.2
-let dnto n =
-  let rec dntoRec = function
-    | (k, acc) when k > n -> acc
-    | (k, acc) -> dntoRec(k+1, k :: acc)
-  dntoRec(1, [])
+let rec dnto = function
+ | 1 -> [1]
+ | n -> n :: dnto(n - 1)
   
 // 34.3
-let evenn n =
-  let rec evennRec = function
-    | (k, acc) when k < 0 -> acc
-    | (k, acc) -> evennRec(k-2, k :: acc)
-  evennRec((n-1)*2, [])
+let rec evenn = function
+ | 1 -> [0]
+ | n when n < 1 -> []
+ | n -> evenn(n - 1) @ [2 * (n - 1)]
