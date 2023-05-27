@@ -1,46 +1,34 @@
 // 39.1
-let rmodd list =
-  let rec rmoddRec = function
-    | ([], acc, i) -> acc
-    | (head :: tail, acc, i) when i % 2 = 1 -> rmoddRec(tail, head :: acc, i + 1)
-    | (head :: tail, acc, i) -> rmoddRec(tail, acc, i + 1)
-  
-  List.rev (rmoddRec(list, [], 0))
+let rec rmodd = function
+  | head :: (head2 :: tail) -> head2 :: rmodd tail
+  | _ -> []
 
 // 39.2
-let del_even list =
-  let rec del_even_rec = function
-    | ([], acc) -> acc
-    | (head :: tail, acc) when head % 2 = 0 -> del_even_rec(tail, acc)
-    | (head :: tail, acc) -> del_even_rec(tail, head :: acc)
-  
-  List.rev (del_even_rec(list, []))
+let rec del_even = function
+  | [] -> []
+  | head :: tail when head % 2 = 0 -> del_even tail
+  | head :: tail -> head :: del_even tail
   
 // 39.3
-let multiplicity value list =
-  let rec multiplicity_rec = function
-    | ([], counter) -> counter
-    | (head :: tail, counter) when head = value -> multiplicity_rec(tail, counter + 1)
-    | (head :: tail, counter) -> multiplicity_rec(tail, counter)
-  
-  multiplicity_rec(list, 0)
+let multiplicity x xs =
+  let rec iter (list, i) = match list with
+    | [] -> i
+    | head :: tail when head = x -> iter(tail, i+1)
+    | head :: tail -> iter(tail, i)
+  iter(xs, 0)
   
 // 39.4
-let split list =
-  let rec split_rec = function
-    | ([], evenList, oddList) -> (evenList, oddList)
-    | ([lastElem], evenList, oddList) -> (lastElem :: evenList, oddList)
-    | (even_head :: odd_head :: tail, evenList, oddList) -> split_rec(tail, even_head :: evenList, odd_head :: oddList)
-  
-  let (evenList, oddList) = split_rec(list, [], [])
-  (List.rev evenList, List.rev oddList)
+let rec rmodd2 = function
+  | head :: (head2 :: tail) -> head :: rmodd2 tail
+  | [head] -> [head]
+  | _ -> []
+
+let rec split = fun xs -> (rmodd2 xs, rmodd xs)
   
 // 39.5
-exception DifferentLengths
-let zip (list1, list2) =
-  let rec zip_rec = function
-    | (list1, list2, []) when (List.length list1) <> (List.length list2) -> raise DifferentLengths
-    | ([], [], acc) -> acc
-    | (head1 :: tail1, head2 :: tail2, acc) -> zip_rec(tail1, tail2, (head1, head2) :: acc)
-  
-  List.rev (zip_rec(list1, list2, []))
+let rec zip (xs1,xs2) =
+  if List.length xs1 <> List.length xs2
+    then failwith "The lists are of different length"
+    else match (xs1, xs2) with
+      | ([], []) ->  []
+      | (head1 :: tail1, head2 :: tail2) -> (head1, head2) :: zip(tail1, tail2)
