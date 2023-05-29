@@ -1,3 +1,5 @@
+open FSharp.Core.Option
+
 // 40.1
 let rec sum (p, xs) = match xs with
   | [] -> 0
@@ -32,23 +34,34 @@ let rec plus = function
   | (head1 :: tail1, head2 :: tail2) -> head2 :: plus(head1 :: tail1, tail2)
 
 // 40.2.5  
-let minus (xs1, xs2) =
-  let rec iter (xs1, xs2, result) = match (xs1, xs2) with
-    | (xs1, []) -> result @ xs1
-    | ([], xs2) -> result
-    | (head1 :: tail1, head2 :: tail2) when head1 < head2 -> iter(tail1, head2 :: tail2, result @ [head1])
-    | (head1 :: tail1, head2 :: tail2) when head1 > head2 -> iter(head1 :: tail1, tail2, result)
-    | (head1 :: tail1, head2 :: tail2) -> iter(tail1, tail2, result)
-  iter(xs1, xs2, [])
+let rec minus = function
+  | ([], xs2) -> []
+  | (xs1, []) -> xs1
+  | (head1 :: tail1, head2 :: tail2) when head1 < head2 -> head1 :: minus(tail1, head2 :: tail2)
+  | (head1 :: tail1, head2 :: tail2) when head1 > head2 -> minus(head1 :: tail1, tail2)
+  | (head1 :: tail1, head2 :: tail2) -> minus(tail1, tail2)
 
 // 40.3.1
-let rec smallest = Some(0)
+let rec smallest = function
+  | [] -> None
+  | [min] -> Some(min)
+  | (min :: next :: tail) when next < min -> smallest(next :: tail)
+  | (min :: next :: tail) -> smallest(min :: tail)
 
 // 40.3.2
-let rec delete (n, xs) = []
+let rec delete (n, xs) = match xs with
+  | [] -> xs
+  | head :: tail when head = n -> tail
+  | head :: tail -> head :: delete(n, tail)
 
 // 40.3.3
-let rec sort = []
+let rec sort = function
+  | [] -> []
+  | list ->
+    let next_smallest = Option.get(smallest list)
+    next_smallest :: sort(delete(next_smallest, list))
 
 // 40.4
-let rec revrev = []
+let rec revrev = function
+  | [] -> []
+  | head :: tail -> revrev(tail) @ [List.rev head]
