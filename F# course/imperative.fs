@@ -7,11 +7,11 @@ let f n =
 
 // 47.4.2
 let fibo n = if n = 0 || n = 1 then n else
-  let mutable i = 2
+  let mutable nextFiboIndex = 2
   let last2Fibos = [| 0; 1 |]
-  while i <= n do
+  while nextFiboIndex <= n do
     let nextFibo = last2Fibos.[0] + last2Fibos.[1]
     last2Fibos.[0] <- last2Fibos.[1]
     last2Fibos.[1] <- nextFibo
-    i <- i + 1
+    nextFiboIndex <- nextFiboIndex + 1
   last2Fibos.[1]
