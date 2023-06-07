@@ -1,9 +1,18 @@
 // 50.2.1
-let fac_seq = seq {
-  yield! (Seq.initInfinite (fun n -> List.fold (*) 1 [1..n]))
-}
+let rec fac n res = seq { 
+     yield res 
+     yield! fac (n + 1) (res * n) } 
+  
+let fac_seq = seq { 
+     yield 1 
+     yield! seq (fac 2 1) } 
 
 // 50.2.2
-let seq_seq = seq {
-  yield! (Seq.initInfinite (fun n -> if n % 2 = 0 then (n+1)/2 else -(n+1)/2))
-}
+let rec f i= seq { 
+     yield (0 - i) 
+     yield i 
+     yield! f(i + 1) } 
+  
+let seq_seq = seq { 
+     yield 0 
+     yield! f 1 }
