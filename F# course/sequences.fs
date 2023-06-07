@@ -1,5 +1,5 @@
 // 49.5.1
-let even_seq = Seq.initInfinite (fun n -> 2 * n)
+let even_seq = Seq.initInfinite (fun n -> 2 * (n + 1))
 
 // 49.5.2
 let fac_seq = Seq.initInfinite (fun n -> List.fold (*) 1 [1..n])
