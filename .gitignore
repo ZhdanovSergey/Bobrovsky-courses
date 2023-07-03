@@ -1,1 +1,4 @@
 **/__pycache__
+**/[Dd]ebug/
+**/.vs/
+**/*.obj
