@@ -31,6 +31,9 @@ internal class BoundedStack<T>
 
     public BoundedStack(int maxCapacity = 32)
     {
+        if (maxCapacity <= 0)
+            throw new ArgumentOutOfRangeException(nameof(maxCapacity));
+
         MaxCapacity = maxCapacity;
     }
     // постусловие: из стека удалятся все значения
