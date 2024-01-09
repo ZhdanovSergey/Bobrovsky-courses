@@ -33,13 +33,15 @@ internal class BoundedStack<T>
     {
         MaxCapacity = maxCapacity;
     }
+    // постусловие: из стека удалятся все значения
     public void Clear()
     {
-        stack = new();
+        stack.Clear();
         PeekStatus = PEEK_NIL;
         PopStatus = POP_NIL;
         PushStatus = PUSH_NIL;
     }
+    // предусловие: стек не пустой
     public T? Peek()
     {
         T? result = default;
@@ -56,6 +58,8 @@ internal class BoundedStack<T>
 
         return result;
     }
+    // предусловие: стек не пустой
+    // постусловие: из стека удалён верхний элемент
     public void Pop()
     {
         if (Size > 0)
@@ -68,6 +72,8 @@ internal class BoundedStack<T>
             PopStatus = POP_ERR;
         }
     }
+    // предусловие: количество элементов в стеке меньше максимального
+    // постусловие: в стек добавлено новое значение
     public void Push(T value)
     {
         if (Size < MaxCapacity)
