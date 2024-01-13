@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOAP_1;
+namespace OOAP_1.BoundedStack;
 
 internal class BoundedStack<T>
 {
@@ -83,7 +83,8 @@ internal class BoundedStack<T>
         {
             stack.Add(value);
             PushStatus = PUSH_OK;
-        } else
+        }
+        else
         {
             PushStatus = PUSH_ERR;
         }
