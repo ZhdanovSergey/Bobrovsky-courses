@@ -149,16 +149,13 @@ class DynArray<TValue> : IDynArray<TValue>
 
     void IncreaseCapacity()
     {
-        var newCapacity = Capacity * CAPACITY_INCREASE_FACTOR;
-        UpdateCapacity(newCapacity);
+        var increasedCapacity = Capacity * CAPACITY_INCREASE_FACTOR;
+        Array.Resize(ref _array, increasedCapacity);
     }
     void DecreaseCapacity()
     {
-        var newCapacity = (int)(Capacity / CAPACITY_DECREASE_FACTOR);
-        UpdateCapacity(newCapacity < MIN_CAPACITY ? MIN_CAPACITY : newCapacity);
-    }
-    void UpdateCapacity(int capacity)
-    {
-        Array.Resize(ref _array, capacity);
+        var decreasedCapacity = (int)(Capacity / CAPACITY_DECREASE_FACTOR);
+        var guardedDecreasedCapacity = decreasedCapacity < MIN_CAPACITY ? MIN_CAPACITY : decreasedCapacity;
+        Array.Resize(ref _array, guardedDecreasedCapacity);
     }
 }
