@@ -72,15 +72,6 @@ class DynArray<TValue> : IDynArray<TValue>
         return new DynArray<TValue>(capacity);
     }
 
-    DynArray(int capacity)
-    {
-        if (capacity < MIN_CAPACITY)
-            throw new ArgumentOutOfRangeException($"{nameof(capacity)} should be more or equal {MIN_CAPACITY}");
-
-        _array = new TValue[capacity];
-        Capacity = capacity;
-    }
-
     // КОМАНДЫ
     public void Append(TValue value)
     {
@@ -138,12 +129,23 @@ class DynArray<TValue> : IDynArray<TValue>
         return _array[index];
     }
     public int Count { get; private set; } = 0;
-    public int Capacity { get; private set; } = MIN_CAPACITY;
+    public int Capacity
+    {
+        get => _array.Length;
+    }
 
     // ДОПОЛНИТЕЛЬНЫЕ ЗАПРОСЫ
     public int InsertStatus { get; private set; } = INSERT_NIL;
     public int RemoveStatus { get; private set; } = REMOVE_NIL;
     public int GetItemStatus { get; private set; } = GET_ITEM_NIL;
+
+    DynArray(int capacity)
+    {
+        if (capacity < MIN_CAPACITY)
+            throw new ArgumentOutOfRangeException($"{nameof(capacity)} should be more or equal {MIN_CAPACITY}");
+
+        _array = new TValue[capacity];
+    }
 
     void IncreaseCapacity()
     {
@@ -158,6 +160,5 @@ class DynArray<TValue> : IDynArray<TValue>
     void UpdateCapacity(int capacity)
     {
         Array.Resize(ref _array, capacity);
-        Capacity = capacity;
     }
 }
