@@ -56,7 +56,7 @@ class PowerSet<TValue> : HashTable<TValue>, IPowerSet<TValue>
     }
     public IPowerSet<TValue> Union(IPowerSet<TValue> paramSet)
     {
-        var result = new PowerSet<TValue>(Math.Max(MaxSize, paramSet.MaxSize));
+        var result = new PowerSet<TValue>(MaxSize + paramSet.MaxSize);
 
         foreach (var thisValue in this)
             result.Add(thisValue);
