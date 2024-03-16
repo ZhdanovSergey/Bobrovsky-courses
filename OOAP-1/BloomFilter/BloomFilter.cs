@@ -73,7 +73,7 @@ class BloomFilter<TValue> : IBloomFilter<TValue>
         var hash1 = getHash(value, HASH_NUMBER_1);
         var hash2 = getHash(value, HASH_NUMBER_2);
 
-        return (store & hash1) == hash1 && (store & hash2) == hash2;
+        return (store & hash1) != 0 && (store & hash2) != 0;
     }
 
     // ДОПОЛНИТЕЛЬНЫЕ ЗАПРОСЫ
@@ -90,6 +90,6 @@ class BloomFilter<TValue> : IBloomFilter<TValue>
             defaultHash /= 10;
         }
 
-        return 0 << resultHash;
+        return 1 << resultHash;
     }
 }
