@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\OOAP-2\\OOAP-2.csproj",
+      "projectUniqueName": "D:\\projects\\Bobrovsky-courses\\OOAP-2\\OOAP-2.csproj",
       "projectName": "OOAP-2",
-      "projectPath": "D:\\projects\\OOAP-2\\OOAP-2.csproj",
+      "projectPath": "D:\\projects\\Bobrovsky-courses\\OOAP-2\\OOAP-2.csproj",
       "packagesPath": "C:\\Users\\serge\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\OOAP-2\\obj\\",
+      "outputPath": "D:\\projects\\Bobrovsky-courses\\OOAP-2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\serge\\AppData\\Roaming\\NuGet\\NuGet.Config",
