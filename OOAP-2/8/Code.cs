@@ -1,4 +1,6 @@
-﻿delegate Message MessageBuilder(string text);
+﻿namespace OOAP_2._8;
+
+delegate Message MessageBuilder(string text);
 delegate void EmailReceiver(EmailMessage message);
 
 class Message

@@ -2,6 +2,8 @@
 // Использование new считается плохой практикой и допустимо лишь в качестве последнего средства.
 // Чтобы определить открытый метод, нужно использовать ключевое слово virtual при объявлении и override при переопределении.
 
+namespace OOAP_2._10;
+
 class Parent
 {
     public void ClosedMethod() => Console.WriteLine("Parent ClosedMethod");
