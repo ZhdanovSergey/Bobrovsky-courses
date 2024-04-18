@@ -40,7 +40,7 @@ class Vector<TValue> : Any, IEnumerable<TValue> where TValue : Any
             if (leftVector.Length != rightVector.Length)
                 return null;
 
-            var result = new Vector<TValue>(this);
+            var result = new TValue[leftVector.Length];
 
             for (var i = 0; i < leftVector.Length; i++)
             {
@@ -52,7 +52,7 @@ class Vector<TValue> : Any, IEnumerable<TValue> where TValue : Any
                 result[i] = sum;
             }
 
-            return result;
+            return new Vector<TValue>(result);
         }
 
         return null;
@@ -65,11 +65,7 @@ class Vector<TValue> : Any, IEnumerable<TValue> where TValue : Any
 
     public int Length { get => _array.Length; }
 
-    public TValue this[int index]
-    {
-        get => _array[index];
-        set => _array[index] = value;
-    }
+    public TValue this[int index] { get => _array[index]; }
 
     public IEnumerator<TValue> GetEnumerator() => ((IEnumerable<TValue>) _array).GetEnumerator();
     IEnumerator IEnumerable.GetEnumerator() => _array.GetEnumerator();
