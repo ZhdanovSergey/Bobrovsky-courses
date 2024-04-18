@@ -21,41 +21,39 @@ class Primitive : Any
 
     public override Any? Sum(Any? other)
     {
-        if (other is Primitive summableOther)
-            return new Primitive(Value + summableOther.Value);
+        var primitiveOther = other as Primitive;
 
-        return null;
+        if (primitiveOther is null)
+            return null;
+
+        return new Primitive(Value + primitiveOther.Value);
     }
 }
 
 class Vector<TValue> : Any, IEnumerable<TValue> where TValue : Any
 {
-    private readonly TValue[] _array;
+    readonly TValue[] _array;
     public override Any? Sum(Any? other)
     {
         var leftVector = this;
+        var rightVector = other as Vector<TValue>;
 
-        if (other is Vector<TValue> rightVector)
+        if (rightVector is null || leftVector.Length != rightVector.Length)
+            return null;
+
+        var result = new TValue[leftVector.Length];
+
+        for (var i = 0; i < leftVector.Length; i++)
         {
-            if (leftVector.Length != rightVector.Length)
+            var sum = (leftVector[i].Sum(rightVector[i])) as TValue;
+
+            if (sum is null)
                 return null;
 
-            var result = new TValue[leftVector.Length];
-
-            for (var i = 0; i < leftVector.Length; i++)
-            {
-                var sum = (leftVector[i].Sum(rightVector[i])) as TValue;
-
-                if (sum is null)
-                    return null;
-
-                result[i] = sum;
-            }
-
-            return new Vector<TValue>(result);
+            result[i] = sum;
         }
 
-        return null;
+        return new Vector<TValue>(result);
     }
 
     public Vector(IEnumerable<TValue> values)
