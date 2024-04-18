@@ -1,9 +1,4 @@
-﻿using OOAP_2._13;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text.Json;
-
-namespace OOAP_2._13;
+﻿namespace OOAP_2._13;
 
 // C# поддерживает все варианты скрытия методов кроме второго: публичный метод родительского класса нельзя скрыть в потомке.
 

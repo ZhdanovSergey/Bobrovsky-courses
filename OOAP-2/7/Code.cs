@@ -20,9 +20,9 @@ class Cat : Animal
         Console.WriteLine("Meow");
 }
 
-class Program
+class Client
 {
-    static void Main()
+    static void Method()
     {
         Animal myAnimal;
 

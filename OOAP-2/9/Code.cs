@@ -1,12 +1,11 @@
-﻿using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
 
 namespace OOAP_2._9;
 
 abstract class Any : General {}
 
-abstract class General
+abstract class General : object
 {
     public void ShallowCopyTo<TTarget>(ref TTarget target)
     {
