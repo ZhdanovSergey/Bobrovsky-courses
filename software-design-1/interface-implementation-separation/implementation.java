@@ -29,7 +29,7 @@ class DbStorage implements Storage {
     private Connection connect() throws SQLException {
         return DriverManager.getConnection(
             "jdbc:mysql://localhost:3306/mydb",
-            "username",
+            "username", 
             "password"
         );
     }
@@ -45,17 +45,17 @@ class DbStorage implements Storage {
                 String value = result.getString("Value");
                 storage.put(id, value);
             }
-        } catch (SQLException e) {
+         } catch (SQLException e) {
             e.printStackTrace();
-        }
+         }
     }
 
     private void saveToDb(int id, String value) {
         try (Connection connection = connect()) {
             connection.createStatement()
                 .executeUpdate(String.format("INSERT TableName(Id, Value) VALUES (%d, %s)", id, value));
-        } catch (SQLException e) {
+         } catch (SQLException e) {
             e.printStackTrace();
-        }
+         }
     }
 }
