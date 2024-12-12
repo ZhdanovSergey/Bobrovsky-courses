@@ -1,3 +1,5 @@
+package InterfaceImplementationSeparation;
+
 import java.sql.*;
 
 interface Storage {
