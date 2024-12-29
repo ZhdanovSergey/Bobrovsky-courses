@@ -4,8 +4,14 @@ public class ThreadExample {
     private static int counter = 0;
 
     public static int main() {
-        Thread thread1 = new Thread(() -> task());
-        Thread thread2 = new Thread(() -> task());
+        Runnable task = () -> {
+            for (int i = 0; i < 1000; i++) {
+                incrementCounter();
+            }
+        };
+
+        Thread thread1 = new Thread(task);
+        Thread thread2 = new Thread(task);
 
         thread1.start();
         thread2.start();
@@ -21,9 +27,7 @@ public class ThreadExample {
     }
 
     
-    private static synchronized void task() {
-        for (int i = 0; i < 1000; i++) {
-            counter++;
-        }
+    private static synchronized void incrementCounter() {
+        counter++;
     };
 }
