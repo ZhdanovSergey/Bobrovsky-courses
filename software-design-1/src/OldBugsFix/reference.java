@@ -3,10 +3,10 @@ package OldBugsFix;
 // Вывод в консоль сделан исключительно для наглядности.
 // На практике соответствующие методы должны возвращать код успеха или ошибки (выброса исключений лучше всегда избегать: на СильныхИдеях прочитайте материалы 86 и 87, как правильно работать с исключениями).
 
-class BankAccount {
+class BankAccountFixRef {
     private double balance;
 
-    public BankAccount(double initialBalance) {
+    public BankAccountFixRef(double initialBalance) {
         this.balance = initialBalance;
     }
 

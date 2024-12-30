@@ -2,12 +2,12 @@ package InterfaceImplementationSeparation;
 
 import java.sql.*;
 
-interface Storage {
+interface StorageRef {
     void save(String value);
     String retrieve(int id);
 }
 
-class DatabaseStorage implements Storage {
+class DatabaseStorage implements StorageRef {
     private Connection connection;
     public DatabaseStorage(Connection connection) {
         this.connection = connection;
@@ -46,14 +46,14 @@ class StorageTest {
     public static void main(String[] args) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "name", "pass");
-            Storage databaseStorage = new DatabaseStorage(connection);
+            StorageRef databaseStorage = new DatabaseStorage(connection);
             testStorage(databaseStorage);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private static void testStorage(Storage storage) {
+    private static void testStorage(StorageRef storage) {
         storage.save("Hello, World!");
         storage.save("Second string");
 

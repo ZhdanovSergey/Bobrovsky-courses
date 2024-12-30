@@ -6,10 +6,10 @@ package OldBugs;
 // - В методе withdraw нет проверки на отрицательные суммы, что позволяет уменьшить баланс путем попытки снятия отрицательного значения.
 // - В методе withdraw нет проверки на достаточность средств на счете, что позволяет уйти в отрицательный баланс банковского счета.
 
-class BankAccount {
+class BankAccountRef {
     private double balance;
 
-    public BankAccount(double initialBalance) {
+    public BankAccountRef(double initialBalance) {
         this.balance = initialBalance;
     }
 
@@ -28,7 +28,7 @@ class BankAccount {
 
 class Main {
     public static void main(String[] args) {
-        BankAccount account = new BankAccount(1000);
+        BankAccountRef account = new BankAccountRef(1000);
         System.out.println("Начальный баланс: " + account.getBalance());
         
         account.deposit(500);
