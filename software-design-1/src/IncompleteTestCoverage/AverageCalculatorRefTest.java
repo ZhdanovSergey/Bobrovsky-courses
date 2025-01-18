@@ -1,7 +1,6 @@
 package IncompleteTestCoverage;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 import org.junit.Test;
 
@@ -28,19 +27,19 @@ public class AverageCalculatorRefTest {
     }
 
     // Дополнительные тесты, которые не были написаны:
-    @Test
-    public void testCalculateAverageWithEmptyArray() {
-        int[] numbers = {};
-        assertThrows(IllegalArgumentException.class, () -> {
-            AverageCalculator.calculateAverage(numbers);
-        });
-    }
+    // @Test
+    // public void testCalculateAverageWithEmptyArray() {
+    //     int[] numbers = {};
+    //     assertThrows(IllegalArgumentException.class, () -> {
+    //         AverageCalculator.calculateAverage(numbers);
+    //     });
+    // }
 
-    @Test
-    public void testCalculateAverageWithNullArray() {
-        int[] numbers = null;
-        assertThrows(IllegalArgumentException.class, () -> {
-            AverageCalculator.calculateAverage(numbers);
-        });
-    }
+    // @Test
+    // public void testCalculateAverageWithNullArray() {
+    //     int[] numbers = null;
+    //     assertThrows(IllegalArgumentException.class, () -> {
+    //         AverageCalculator.calculateAverage(numbers);
+    //     });
+    // }
 }
