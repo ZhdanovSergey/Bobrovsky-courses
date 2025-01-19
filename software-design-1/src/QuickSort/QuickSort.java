@@ -58,6 +58,10 @@ public class QuickSort {
         // i == low
         // j == low
 
+        // TODO: fix loop invariant
+        //     low <= i < high
+        //     low <= j < high
+
         // loop invariant:
         // low <= i <= high
         // low <= j <= high
